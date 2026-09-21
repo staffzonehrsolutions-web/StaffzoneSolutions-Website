@@ -1,4 +1,4 @@
-import { Route, Switch } from "wouter";
+import { Router as WouterRouter, Route, Switch } from "wouter";
 import Layout from "./Layout";
 import About from "./About";
 import Careers from "./Careers";
@@ -8,7 +8,7 @@ import InternshipApplication from "./InternshipApplication";
 import Partner from "./Partner";
 import Services from "./Services";
 
-function Router() {
+function AppRoutes() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -24,9 +24,13 @@ function Router() {
 }
 
 export default function App() {
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+
   return (
-    <Layout>
-      <Router />
-    </Layout>
+    <WouterRouter base={baseUrl}>
+      <Layout>
+        <AppRoutes />
+      </Layout>
+    </WouterRouter>
   );
 }
