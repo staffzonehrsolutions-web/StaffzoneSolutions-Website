@@ -1,15 +1,12 @@
 import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
-import Layout from "./components/Layout";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import About from "./pages/About";
-import Careers from "./pages/Careers";
-import Contact from "./pages/Contact";
-import Home from "./pages/Home";
-import InternshipApplication from "./pages/InternshipApplication";
-import NotFound from "./pages/NotFound";
-import Partner from "./pages/Partner";
-import Services from "./pages/Services";
+import Layout from "./Layout";
+import About from "./About";
+import Careers from "./Careers";
+import Contact from "./Contact";
+import Home from "./Home";
+import InternshipApplication from "./InternshipApplication";
+import Partner from "./Partner";
+import Services from "./Services";
 
 function Router() {
   return (
@@ -21,20 +18,15 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/partner" component={Partner} />
       <Route path="/internship-application" component={InternshipApplication} />
-      <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
+      <Route component={Home} />
     </Switch>
   );
 }
 
 export default function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <Layout>
-          <Router />
-        </Layout>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <Layout>
+      <Router />
+    </Layout>
   );
 }
