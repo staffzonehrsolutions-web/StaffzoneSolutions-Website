@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowUpRight, Instagram, Linkedin, Menu, Twitter, X } from "lucide-react";
+import logo from './StaffzoneSolutionsLOGO.jpeg';
 
 const navItems = [
   { label: "About", href: "/about" },
@@ -15,7 +16,11 @@ const navItems = [
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className={`brand ${light ? "brand-light" : ""}`} aria-label="StaffzoneSolutions home">
-      <img className="brand-logo" src="/manus-storage/StaffzoneSolutionsLOGO_e18bd229.jpeg" alt="Staffzone Solutions — For a Better Tomorrow" />
+      {/* 
+        This is what changed below! 
+        Replaced the old text string with the {logo} variable you imported. 
+      */}
+      <img className="brand-logo" src={logo} alt="Staffzone Solutions — For a Better Tomorrow" />
     </Link>
   );
 }
