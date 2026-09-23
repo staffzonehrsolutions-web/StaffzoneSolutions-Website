@@ -102,7 +102,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <div className="footer-links-group">
             <span className="footer-label">Get in touch</span>
             <a href="mailto:admin@staffzonesolutions.in">admin@staffzonesolutions.in</a>
-            <a href="https://www.staffzonesolution.in" target="_blank" rel="noreferrer">www.staffzonesolution.in</a>
+            <a href="https://www.staffzonesolutions.in" target="_blank" rel="noreferrer">www.staffzonesolutions.in</a>
           </div>
           <div className="footer-newsletter">
             <span className="footer-label">Stay in the loop</span>
