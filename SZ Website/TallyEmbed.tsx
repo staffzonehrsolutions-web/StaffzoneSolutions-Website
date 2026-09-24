@@ -15,7 +15,7 @@ export default function TallyEmbed() {
         fontFamily: 'sans-serif'
       }}
     >
-      {/* Replace YOUR_ACCESS_KEY_HERE with key sent to admin@staffzonesolutions.in */}
+      {/* Replace YOUR_ACCESS_KEY_HERE with the key sent to admin@staffzonesolutions.in */}
       <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
 
       <div style={{ marginBottom: '16px' }}>
