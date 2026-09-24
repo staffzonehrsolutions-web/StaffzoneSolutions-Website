@@ -11,8 +11,9 @@ export default function TallyEmbed() {
         borderRadius: '12px' 
       }}
     >
+      {/* ⚠️ CRITICAL FIX: Replace the link below with your actual Tally link ⚠️ */}
       <iframe 
-        src="YOUR_TALLY_EMBED_URL?hideTitle=1&transparentBackground=1" 
+        src="https://tally.so/embed/YOUR_FORM_ID_HERE?hideTitle=1&transparentBackground=1" 
         style={{ 
           position: 'absolute', 
           top: 0, 
