@@ -33,6 +33,15 @@ jobs:
         run: npm run build
         working-directory: ./SZ Website
 
+      - name: Create route fallback pages
+        run: |
+          cp dist/index.html dist/404.html
+          for route in about services careers contact partner internship-application; do
+            mkdir -p "dist/$route"
+            cp dist/index.html "dist/$route/index.html"
+          done
+        working-directory: ./SZ Website
+
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
