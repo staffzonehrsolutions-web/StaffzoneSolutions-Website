@@ -10,9 +10,10 @@ export default function WebsiteForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget; // Save form reference before async calls
     setStatus('Submitting application...');
     
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     const file = formData.get('cv') as File;
     let cvPath = null;
 
@@ -44,7 +45,7 @@ export default function WebsiteForm() {
       setStatus('Error saving application. Please try again.');
     } else {
       setStatus('Success! Your application has been securely submitted.');
-      e.currentTarget.reset();
+      form.reset(); // Clears all input fields and file upload boxes
     }
   };
 
