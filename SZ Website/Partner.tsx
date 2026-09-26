@@ -1,4 +1,4 @@
-import TallyEmbed from "./TallyEmbed";
+import WebsiteForm from "./WebsiteForm";
 
 export default function Partner() {
   return (
@@ -20,11 +20,7 @@ export default function Partner() {
           </div>
 
           <div className="partner-form">
-            <TallyEmbed
-              formId="jaN7RR"
-              title="Partner with StaffZone Solutions"
-              height={900}
-            />
+            <WebsiteForm />
           </div>
         </div>
       </section>
