@@ -1,4 +1,4 @@
-import TallyEmbed from "./TallyEmbed";
+import WebsiteForm from "./WebsiteForm";
 import { useRef } from "react";
 import { Clock3, Mail, MapPin } from "lucide-react";
 import { MapView } from "./Map";
@@ -39,11 +39,7 @@ export default function Contact() {
           </div>
 
           <div className="contact-form">
-            <TallyEmbed
-              formId="1A8Jpg"
-              title="Contact StaffZone Solutions"
-              height={760}
-            />
+            <WebsiteForm />
           </div>
         </div>
       </section>
