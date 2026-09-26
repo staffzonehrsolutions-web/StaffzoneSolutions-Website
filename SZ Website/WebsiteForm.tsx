@@ -16,7 +16,6 @@ export default function WebsiteForm() {
     const file = formData.get('cv') as File;
     let cvPath = null;
 
-    // 1. Upload CV to Storage if provided
     if (file && file.size > 0) {
       const fileName = `${Date.now()}-${file.name}`;
       const { data: uploadData, error: uploadError } = await supabase.storage
@@ -30,7 +29,6 @@ export default function WebsiteForm() {
       cvPath = uploadData?.path;
     }
 
-    // 2. Save form text to Database
     const { error: dbError } = await supabase
       .from('applications')
       .insert([
@@ -50,36 +48,66 @@ export default function WebsiteForm() {
     }
   };
 
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    boxSizing: 'border-box',
+    padding: '12px 14px',
+    borderRadius: '8px',
+    border: '1px solid #d1d5db',
+    fontSize: '15px',
+    marginTop: '6px',
+    outline: 'none',
+    fontFamily: 'inherit'
+  };
+
   return (
-    <div style={{ maxWidth: '500px', margin: '0 auto', padding: '20px' }}>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-        <label>
-          <strong>Name</strong><br/>
-          <input type="text" name="name" required style={{ width: '100%', padding: '8px' }} />
+    <div style={{ width: '100%', boxSizing: 'border-box', padding: '10px 0' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px', width: '100%' }}>
+        <label style={{ width: '100%', display: 'block', fontWeight: '600', fontSize: '14px' }}>
+          Name
+          <input type="text" name="name" required style={inputStyle} placeholder="Your full name" />
         </label>
-        <label>
-          <strong>Email</strong><br/>
-          <input type="email" name="email" required style={{ width: '100%', padding: '8px' }} />
+
+        <label style={{ width: '100%', display: 'block', fontWeight: '600', fontSize: '14px' }}>
+          Email
+          <input type="email" name="email" required style={inputStyle} placeholder="name@example.com" />
         </label>
-        <label>
-          <strong>Message</strong><br/>
-          <textarea name="message" required rows={4} style={{ width: '100%', padding: '8px' }}></textarea>
+
+        <label style={{ width: '100%', display: 'block', fontWeight: '600', fontSize: '14px' }}>
+          Message
+          <textarea name="message" required rows={4} style={{ ...inputStyle, resize: 'vertical' }} placeholder="How can we help you?" />
         </label>
-        <label>
-          <strong>Upload CV (PDF or Word)</strong><br/>
-          <input type="file" name="cv" accept=".pdf,.doc,.docx" required style={{ padding: '8px 0' }} />
+
+        <label style={{ width: '100%', display: 'block', fontWeight: '600', fontSize: '14px' }}>
+          Upload CV (PDF or Word)
+          <input type="file" name="cv" accept=".pdf,.doc,.docx" required style={{ ...inputStyle, padding: '8px', background: '#f9fafb' }} />
         </label>
         
         <button 
           type="submit" 
           disabled={status === 'Submitting application...'}
-          style={{ padding: '12px', background: '#0056b3', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
+          style={{ 
+            width: '100%',
+            padding: '14px', 
+            background: '#0056b3', 
+            color: '#ffffff', 
+            border: 'none', 
+            borderRadius: '8px',
+            cursor: 'pointer', 
+            fontWeight: '600',
+            fontSize: '16px',
+            marginTop: '8px'
+          }}
         >
           Submit Application
         </button>
       </form>
       
-      {status && <p style={{ marginTop: '15px', fontWeight: 'bold', color: status.includes('Success') ? 'green' : 'red' }}>{status}</p>}
+      {status && (
+        <p style={{ marginTop: '15px', fontWeight: 'bold', color: status.includes('Success') ? '#15803d' : '#b91c1c' }}>
+          {status}
+        </p>
+      )}
     </div>
   );
 }
