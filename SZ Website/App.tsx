@@ -1,5 +1,4 @@
 import { Router as WouterRouter, Route, Switch } from "wouter";
-import { HelmetProvider } from "react-helmet-async";
 import Layout from "./Layout";
 import About from "./About";
 import Careers from "./Careers";
@@ -28,12 +27,10 @@ export default function App() {
   const baseUrl = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/$/, "") : "";
 
   return (
-    <HelmetProvider>
-      <WouterRouter base={baseUrl}>
-        <Layout>
-          <AppRoutes />
-        </Layout>
-      </WouterRouter>
-    </HelmetProvider>
+    <WouterRouter base={baseUrl}>
+      <Layout>
+        <AppRoutes />
+      </Layout>
+    </WouterRouter>
   );
 }
