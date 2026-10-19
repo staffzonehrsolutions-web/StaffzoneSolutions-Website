@@ -103,9 +103,13 @@ export default function Home() {
 
       <section className="section proof-section">
         <div className="container proof-grid">
-          <div className="proof-image-card">
-            <div className="proof-image" />
-            <div className="proof-caption"><span className="caption-dot" /> Real people. Real progress.</div>
+          <div className="proof-image-card" style={{ overflow: "hidden", position: "relative" }}>
+            <img 
+              src="/your-image-file-name.jpg" 
+              alt="Why Staffzone Team" 
+              style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} 
+            />
+            <div className="proof-caption" style={{ position: "relative", zIndex: 2 }}><span className="caption-dot" /> Real people. Real progress.</div>
           </div>
           <div className="proof-copy">
             <div className="section-kicker">03 / Why Staffzone</div>
