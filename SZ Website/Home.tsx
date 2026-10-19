@@ -103,35 +103,35 @@ export default function Home() {
 
       <section className="section proof-section">
         <div className="container proof-grid">
-          <div className="proof-image-card" style={{ overflow: "hidden", position: "relative" }}>
+          <div className="proof-image-card" style={{ 
+            position: "relative", 
+            overflow: "hidden", 
+            borderRadius: "36px", 
+            minHeight: "450px",
+            backgroundColor: "#e2e8f0", 
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
+          }}>
+            <svg className="animate-spin" style={{ position: "absolute", width: "40px", height: "40px", color: "#94a3b8" }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <style>
+                {`@keyframes spin { 100% { transform: rotate(360deg); } } .animate-spin { animation: spin 1s linear infinite; }`}
+              </style>
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" opacity="0.25"></circle>
+              <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" opacity="0.75"></path>
+            </svg>
+
             <img 
               src="/Why%20Staffzone%20Solutions_.png" 
               alt="Why Staffzone Team" 
-              style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} 
+              style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0, zIndex: 1 }} 
             />
-            <div className="proof-caption" style={{ position: "relative", zIndex: 2 }}><span className="caption-dot" /> Real people. Real progress.</div>
-          </div>
-          <div className="proof-copy">
-            <div className="section-kicker">03 / Why Staffzone</div>
-            <h2 className="section-heading">Not just a vendor.<br /><span>A team on your side.</span></h2>
-            <p className="body-large">We combine market insight, operational rigour, and a genuine interest in people to help you create workplaces where good work can happen.</p>
-            <ul className="check-list">
-              <li><Check size={16} /> Senior attention on every engagement</li>
-              <li><Check size={16} /> Transparent, human communication</li>
-              <li><Check size={16} /> Solutions designed to keep working</li>
-            </ul>
-            <Link href="/about" className="button button-outline">Meet StaffzoneSolutions <ArrowRight size={16} /></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="cta-section">
-        <div className="container cta-inner">
-          <div className="cta-mark"><Layers3 size={25} /></div>
-          <div><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Start a conversation</div><h2>Let&apos;s make your next move<br /><em>your best one yet.</em></h2></div>
-          <Link href="/contact" className="button button-accent cta-button">Talk to our team <ArrowUpRight size={17} /></Link>
-        </div>
-      </section>
-    </div>
-  );
-}
+            
+            <div className="proof-caption" style={{ 
+              position: "absolute", 
+              bottom: "24px", 
+              left: "24px", 
+              zIndex: 2,
+              backgroundColor: "#0f172a", 
+              color: "#
