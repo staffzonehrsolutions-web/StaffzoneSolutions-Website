@@ -134,4 +134,4 @@ export default function Home() {
               left: "24px", 
               zIndex: 2,
               backgroundColor: "#0f172a", 
-              color: "#
+              color: "#ffffff",
