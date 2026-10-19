@@ -17,6 +17,61 @@ const audiencePaths = [
 export default function Home() {
   return (
     <div>
+      <style>{`
+        /* Staffzone cyan border-draw hover effect */
+        .home-border-draw {
+          position: relative;
+          isolation: isolate;
+        }
+
+        .home-border-draw::before,
+        .home-border-draw::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          box-sizing: border-box;
+          border: 2px solid transparent;
+          border-radius: inherit;
+          pointer-events: none;
+          z-index: 10;
+        }
+
+        /* Draw the top edge, then the left edge. */
+        .home-border-draw::before {
+          top: 0;
+          left: 0;
+          border-top-color: #02e3f4;
+          border-left-color: #02e3f4;
+          transition: width 0.25s ease, height 0.25s ease 0.25s;
+        }
+
+        /* Complete the border from the bottom-right corner. */
+        .home-border-draw::after {
+          right: 0;
+          bottom: 0;
+          border-right-color: #02e3f4;
+          border-bottom-color: #02e3f4;
+          transition: width 0.25s ease 0.5s, height 0.25s ease 0.75s;
+        }
+
+        .home-border-draw:hover::before,
+        .home-border-draw:hover::after,
+        .home-border-draw:focus-visible::before,
+        .home-border-draw:focus-visible::after,
+        .home-border-draw:focus-within::before,
+        .home-border-draw:focus-within::after {
+          width: 100%;
+          height: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .home-border-draw::before,
+          .home-border-draw::after {
+            transition: none;
+          }
+        }
+      `}</style>
       <section className="hero-section">
         <div className="hero-glow hero-glow-one" />
         <div className="hero-glow hero-glow-two" />
@@ -72,7 +127,7 @@ export default function Home() {
           <div className="section-kicker">One mission · Two pathways</div>
           <div className="audience-header"><h2 className="section-heading">Progress looks different<br /><span>for everyone.</span></h2><p className="body-large">We create value on both sides of the opportunity—helping employers grow with confidence and helping people grow with purpose.</p></div>
           <div className="audience-grid">
-            {audiencePaths.map((path, index) => <article className={`audience-card audience-card-${index + 1}`} key={path.eyebrow}><div className="audience-card-number">0{index + 1}</div><div className="eyebrow">{path.eyebrow}</div><h3>{path.title}</h3><p>{path.text}</p><ul>{path.items.map((item) => <li key={item}><span />{item}</li>)}</ul><div className="audience-outcome">{path.outcome}</div><Link href={index === 0 ? "/services" : "/careers"} className="text-link text-link-dark">{index === 0 ? "Explore employer solutions" : "Explore career pathways"} <ArrowRight size={16} /></Link></article>)}
+            {audiencePaths.map((path, index) => <article className={`audience-card audience-card-${index + 1} home-border-draw`} key={path.eyebrow}><div className="audience-card-number">0{index + 1}</div><div className="eyebrow">{path.eyebrow}</div><h3>{path.title}</h3><p>{path.text}</p><ul>{path.items.map((item) => <li key={item}><span />{item}</li>)}</ul><div className="audience-outcome">{path.outcome}</div><Link href={index === 0 ? "/services" : "/careers"} className="text-link text-link-dark">{index === 0 ? "Explore employer solutions" : "Explore career pathways"} <ArrowRight size={16} /></Link></article>)}
           </div>
         </div>
       </section>
@@ -90,7 +145,7 @@ export default function Home() {
             {services.map((service) => {
               const Icon = service.icon;
               return (
-                <Link href="/services" className="service-preview-card" key={service.number}>
+                <Link href="/services" className="service-preview-card home-border-draw" key={service.number}>
                   <div className="service-card-top"><span className="service-number">{service.number}</span><Icon size={22} strokeWidth={1.7} /></div>
                   <div><h3>{service.title}</h3><p>{service.text}</p></div>
                   <span className="card-arrow"><ArrowRight size={17} /></span>
@@ -103,12 +158,12 @@ export default function Home() {
 
       <section className="section proof-section">
         <div className="container proof-grid">
-          <div className="proof-image-card" style={{ 
+          <div className="proof-image-card home-border-draw" style={{ 
             position: "relative", 
             overflow: "hidden", 
             borderRadius: "36px", 
             minHeight: "450px",
-            backgroundColor: "#e2e8f0", 
+            backgroundColor: "#021227", 
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -125,7 +180,15 @@ export default function Home() {
             <img 
               src="/Why%20Staffzone%20Solutions_.png" 
               alt="Why Staffzone Team" 
-              style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0, zIndex: 1 }} 
+              style={{ 
+                width: "100%", 
+                height: "100%", 
+                objectFit: "contain", 
+                position: "absolute", 
+                inset: 0, 
+                zIndex: 1,
+                padding: "20px"
+              }} 
             />
             
             <div className="proof-caption" style={{ 
@@ -141,7 +204,8 @@ export default function Home() {
               fontWeight: "500",
               display: "flex",
               alignItems: "center",
-              gap: "8px"
+              gap: "8px",
+              border: "1px solid rgba(255,255,255,0.1)"
             }}>
               <span className="caption-dot" style={{ width: "8px", height: "8px", backgroundColor: "#22d3ee", borderRadius: "50%" }} /> 
               Real people. Real progress.
