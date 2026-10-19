@@ -212,7 +212,7 @@ export default function Home() {
             </div>
           </div>
           <div className="proof-copy">
-            <div className="section-kicker">03 / Why Staffzone</div>
+            <div className="section-kicker">03 / Why Staffzone Solutions? </div>
             <h2 className="section-heading">Not just a vendor.<br /><span>A team on your side.</span></h2>
             <p className="body-large">We combine market insight, operational rigour, and a genuine interest in people to help you create workplaces where good work can happen.</p>
             <ul className="check-list">
