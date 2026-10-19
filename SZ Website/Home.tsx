@@ -105,7 +105,7 @@ export default function Home() {
         <div className="container proof-grid">
           <div className="proof-image-card" style={{ overflow: "hidden", position: "relative" }}>
             <img 
-              src="/your-image-file-name.jpg" 
+              src="/Why%20Staffzone%20Solutions_.png" 
               alt="Why Staffzone Team" 
               style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0 }} 
             />
