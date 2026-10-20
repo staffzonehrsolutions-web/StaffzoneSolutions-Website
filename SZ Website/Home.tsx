@@ -1,6 +1,5 @@
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Compass, Layers3, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 import { Link } from "wouter";
-import CerisePlunge from "./CerisePlunge";
 
 const services = [
   { icon: UsersRound, number: "01", title: "Recruitment & staffing", text: "Build high-performing teams with people who bring the right skills, mindset, and momentum." },
@@ -116,26 +115,38 @@ export default function Home() {
           
           <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
             
-            {/* CerisePlunge WebGL Animation on the Left */}
+            {/* Stable Fallback Image Container on the Left */}
             <div style={{ flex: "1 1 350px", display: "flex", justifyContent: "flex-start" }}>
               <div className="home-border-draw" style={{ 
                 width: "100%", 
                 maxWidth: "450px", 
                 aspectRatio: "1 / 1", 
                 borderRadius: "36px", 
-                backgroundColor: "transparent",
+                backgroundColor: "#021227",
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center", 
                 overflow: "hidden",
-                border: "1px solid rgba(2, 227, 244, 0.2)"
+                position: "relative",
+                border: "1px solid rgba(2, 227, 244, 0.2)",
+                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
               }}>
-                {/* 3D Animation Component Placed Here */}
-                <CerisePlunge />
+                <img 
+                  src="/Why%20Staffzone%20Solutions_.png" 
+                  alt="Staffzone Solutions Overview" 
+                  style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                    position: "absolute", 
+                    inset: 0, 
+                    zIndex: 1
+                  }} 
+                />
               </div>
             </div>
 
-            {/* Text Content on the Right (Yellow Box) */}
+            {/* Text Content on the Right */}
             <div style={{ flex: "1 1 400px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <h2 className="display-heading" style={{ marginTop: 0 }}>Work is changing.<br /><span>People still matter most.</span></h2>
               <div className="intro-bottom-row" style={{ marginTop: "1.5rem" }}>
@@ -195,14 +206,6 @@ export default function Home() {
             justifyContent: "center",
             boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
           }}>
-            <svg className="animate-spin" style={{ position: "absolute", width: "40px", height: "40px", color: "#94a3b8" }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <style>
-                {`@keyframes spin { 100% { transform: rotate(360deg); } } .animate-spin { animation: spin 1s linear infinite; }`}
-              </style>
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" opacity="0.25"></circle>
-              <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" opacity="0.75"></path>
-            </svg>
-
             <img 
               src="/Why%20Staffzone%20Solutions_.png" 
               alt="Why Staffzone Team" 
