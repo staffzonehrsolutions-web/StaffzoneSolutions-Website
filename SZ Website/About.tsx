@@ -79,6 +79,27 @@ export default function About() {
   const [valuesVisible, setValuesVisible] = useState(false);
   const valuesRef = useRef<HTMLElement>(null);
 
+  // Keep the AtlasSash globe at 90% of its circular frame on desktop and mobile.
+  const atlasFrameRef = useRef<HTMLDivElement>(null);
+  const [atlasSize, setAtlasSize] = useState(468);
+
+  useEffect(() => {
+    const frame = atlasFrameRef.current;
+    if (!frame) return;
+
+    const updateAtlasSize = () => {
+      const frameWidth = frame.clientWidth;
+      if (frameWidth > 0) {
+        setAtlasSize(Math.round(frameWidth * 0.9));
+      }
+    };
+
+    updateAtlasSize();
+    const observer = new ResizeObserver(updateAtlasSize);
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const section = statsRef.current;
     if (!section) return;
@@ -113,6 +134,7 @@ export default function About() {
   <div className="container story-grid">
     <div className="story-image-wrap">
       <div
+        ref={atlasFrameRef}
         className="story-atlas-frame"
         style={{
           position: "relative",
@@ -140,7 +162,7 @@ export default function About() {
           }}
           textColor="#02E3F4"
           ring={{ lines: 4, radius: 110, tilt: 38, damping: 5, drift: 1.3 }}
-          size={360}
+          size={atlasSize}
           look={{ clouds: 4, lights: 4, atmosphere: "#02E3F4" }}
           sun={{ source: "cursor", angle: 155, daylight: 70 }}
           drag={true}
