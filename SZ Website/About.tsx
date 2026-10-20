@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, HeartHandshake, Lightbulb, ShieldCheck, Target, UsersRound } from "lucide-react";
 import { Link } from "wouter";
 import AtlasSash from "./AtlasSash";
+import type { CSSProperties } from "react";
 
 const values = [
   { icon: HeartHandshake, title: "People-first", text: "We create better outcomes for employers and candidates by listening to both sides of the opportunity." },
@@ -28,6 +29,62 @@ function TypeoutValueCard({ value, index, active }: { value: typeof values[numbe
   }, [active, index, value.text]);
 
   return <article className={`value-card social-value-card ${active ? "social-value-card-visible" : ""}`}><div className="social-card-title"><span className="social-status-dot" /> {value.title}</div><p className="social-card-body">{typedText}<span className="typing-cursor" aria-hidden="true" /></p></article>;
+}
+
+/** Decorative AtlasSash animation used only in the blue hero and CTA bands. */
+function AboutAtlasAmbient({ style }: { style: CSSProperties }) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState(360);
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) return;
+
+    const updateSize = () => {
+      const nextSize = Math.round(Math.min(frame.clientWidth, frame.clientHeight));
+      if (nextSize > 0) setSize((current) => current === nextSize ? current : nextSize);
+    };
+
+    updateSize();
+    const observer = new ResizeObserver(updateSize);
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={frameRef}
+      aria-hidden="true"
+      style={{
+        position: "absolute",
+        overflow: "hidden",
+        pointerEvents: "none",
+        ...style,
+      }}
+    >
+      <AtlasSash
+        text="Staffzone Solutions · People before process · Local expertise · National ambition"
+        background="transparent"
+        stars={2}
+        font={{
+          fontFamily: "Inter",
+          fontWeight: 500,
+          fontSize: 14,
+          lineHeight: "1.25em",
+          letterSpacing: "0em",
+        }}
+        textColor="#02E3F4"
+        ring={{ lines: 3, radius: 110, tilt: 36, damping: 5, drift: 1.2 }}
+        size={size}
+        look={{ clouds: 3, lights: 3, atmosphere: "#02E3F4" }}
+        sun={{ source: "fixed", angle: 155, daylight: 68 }}
+        drag={false}
+        hover={0}
+        speed={1.5}
+        style={{ width: "100%", height: "100%" }}
+      />
+    </div>
+  );
 }
 
 const impactStats = [
@@ -79,27 +136,6 @@ export default function About() {
   const [valuesVisible, setValuesVisible] = useState(false);
   const valuesRef = useRef<HTMLElement>(null);
 
-  // Keep the AtlasSash globe at 90% of its circular frame on desktop and mobile.
-  const atlasFrameRef = useRef<HTMLDivElement>(null);
-  const [atlasSize, setAtlasSize] = useState(468);
-
-  useEffect(() => {
-    const frame = atlasFrameRef.current;
-    if (!frame) return;
-
-    const updateAtlasSize = () => {
-      const frameWidth = frame.clientWidth;
-      if (frameWidth > 0) {
-        setAtlasSize(Math.round(frameWidth * 0.9));
-      }
-    };
-
-    updateAtlasSize();
-    const observer = new ResizeObserver(updateAtlasSize);
-    observer.observe(frame);
-    return () => observer.disconnect();
-  }, []);
-
   useEffect(() => {
     const section = statsRef.current;
     if (!section) return;
@@ -128,49 +164,25 @@ export default function About() {
 
   return (
     <div>
-<section className="page-hero page-hero-about"><div className="container page-hero-inner"><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> About StaffzoneSolutions</div><h1>Better work starts<br /><em>with the right people.</em></h1><p>Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.</p></div></section>
+<section className="page-hero page-hero-about" style={{ position: "relative", overflow: "hidden" }}>
+  <AboutAtlasAmbient
+    style={{
+      width: "clamp(240px, 38vw, 430px)",
+      height: "clamp(240px, 38vw, 430px)",
+      top: "50%",
+      right: "-2%",
+      transform: "translateY(-50%)",
+      opacity: 0.25,
+      zIndex: 0,
+    }}
+  />
+  <div className="container page-hero-inner" style={{ position: "relative", zIndex: 1 }}><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> About StaffzoneSolutions</div><h1>Better work starts<br /><em>with the right people.</em></h1><p>Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.</p></div>
+</section>
 
 <section className="section story-section">
   <div className="container story-grid">
     <div className="story-image-wrap">
-      <div
-        ref={atlasFrameRef}
-        className="story-atlas-frame"
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "520px",
-          aspectRatio: "1 / 1",
-          marginInline: "auto",
-          overflow: "hidden",
-          borderRadius: "50%",
-          background: "radial-gradient(circle at 50% 42%, #073764 0%, #021b35 58%, #010b19 100%)",
-          border: "1px solid rgba(2, 227, 244, 0.45)",
-          boxShadow: "0 0 42px rgba(2, 227, 244, 0.14)",
-        }}
-      >
-        <AtlasSash
-          text="StaffzoneSolutions was created to help organisations hire with confidence and help individuals access the skills, experience, and opportunities they need to succeed."
-          background="transparent"
-          stars={3}
-          font={{
-            fontFamily: "Inter",
-            fontWeight: 500,
-            fontSize: 22,
-            lineHeight: "1.25em",
-            letterSpacing: "0em",
-          }}
-          textColor="#02E3F4"
-          ring={{ lines: 4, radius: 110, tilt: 38, damping: 5, drift: 1.3 }}
-          size={atlasSize}
-          look={{ clouds: 4, lights: 4, atmosphere: "#02E3F4" }}
-          sun={{ source: "cursor", angle: 155, daylight: 70 }}
-          drag={true}
-          hover={3}
-          speed={2}
-          style={{ width: "100%", height: "100%" }}
-        />
-      </div>
+      <div className="story-image" />
       <div className="image-note">
         <span>01</span>
         <span>People before process</span>
@@ -193,7 +205,20 @@ export default function About() {
 
       <section className="section team-section"><div className="container"><div className="section-header-row"><div><div className="section-kicker">The people behind it</div><h2 className="section-heading">The team behind<br /><span>the opportunity.</span></h2></div><UsersRound className="section-header-icon" size={34} /></div><div className="team-group"><div className="team-group-heading"><span>01</span><h3>Founding Members</h3><p>Leadership and direction for StaffzoneSolutions LLP.</p></div><div className="team-grid team-grid-two">{foundingMembers.map((member) => <div className="team-card" key={member.name}><div className="team-meta"><span className="team-role-label">Founding Member</span><h3>{member.name}</h3><p>{member.role}</p></div></div>)}</div></div><div className="team-group"><div className="team-group-heading"><span>02</span><h3>Key Managerial Personnel (KMP)</h3><p>Operational leadership supporting our organisation and partners.</p></div><div className="team-grid team-grid-two">{corporateTeam.map((member) => <div className="team-card" key={member.name}><div className="team-meta"><span className="team-role-label">KMP</span><h3>{member.name}</h3><p>{member.role}</p></div></div>)}</div></div><div className="team-group"><div className="team-group-heading"><span>03</span><h3>Leaders</h3><p>Focused leaders helping employers and talent move forward.</p></div><div className="team-grid team-grid-two">{leaders.map((member) => <div className="team-card" key={member.name}><div className="team-meta"><span className="team-role-label">Leader</span><h3>{member.name}</h3><p>{member.role}</p></div></div>)}</div></div></div></section>
 
-      <section className="cta-section"><div className="container cta-inner"><div className="cta-mark"><UsersRound size={24} /></div><div><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Work with us</div><h2>Let&apos;s build something<br /><em>worth being part of.</em></h2></div><Link href="/contact" className="button button-accent cta-button">Get in touch <ArrowRight size={17} /></Link></div></section>
+      <section className="cta-section" style={{ position: "relative", overflow: "hidden" }}>
+        <AboutAtlasAmbient
+          style={{
+            width: "clamp(210px, 28vw, 320px)",
+            height: "clamp(210px, 28vw, 320px)",
+            top: "50%",
+            right: "3%",
+            transform: "translateY(-50%)",
+            opacity: 0.2,
+            zIndex: 0,
+          }}
+        />
+        <div className="container cta-inner" style={{ position: "relative", zIndex: 1 }}><div className="cta-mark"><UsersRound size={24} /></div><div><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Work with us</div><h2>Let&apos;s build something<br /><em>worth being part of.</em></h2></div><Link href="/contact" className="button button-accent cta-button">Get in touch <ArrowRight size={17} /></Link></div>
+      </section>
     </div>
   );
 }
