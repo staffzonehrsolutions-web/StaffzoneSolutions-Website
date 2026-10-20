@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Compass, Layers3, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 import { Link } from "wouter";
+import CerisePlunge from "./CerisePlunge";
 
 const services = [
   { icon: UsersRound, number: "01", title: "Recruitment & staffing", text: "Build high-performing teams with people who bring the right skills, mindset, and momentum." },
@@ -90,9 +91,12 @@ export default function Home() {
             <div className="hero-note"><span className="note-line" /> Andhra Pradesh roots · National reach</div>
           </div>
           <div className="hero-visual reveal-up reveal-delay-2" aria-label="A collaborative team meeting">
-            <div className="hero-image" />
+            {/* CerisePlunge Component placed inside the top hero visual box */}
+            <div style={{ position: "absolute", inset: 0, zIndex: 1, overflow: "hidden", borderRadius: "inherit" }}>
+              <CerisePlunge />
+            </div>
             <div className="hero-image-overlay" />
-            <div className="hero-stat-card">
+            <div className="hero-stat-card" style={{ zIndex: 3, position: "relative" }}>
               <span className="stat-kicker">Average time to hire</span>
               <strong>18 days</strong>
               <span className="stat-positive"><span>↗</span> 32% faster than average</span>
@@ -115,7 +119,7 @@ export default function Home() {
           
           <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
             
-            {/* Stable Fallback Image Container on the Left */}
+            {/* Lottie Animation Container for animation.json below 01 / What we do */}
             <div style={{ flex: "1 1 350px", display: "flex", justifyContent: "flex-start" }}>
               <div className="home-border-draw" style={{ 
                 width: "100%", 
@@ -131,17 +135,10 @@ export default function Home() {
                 border: "1px solid rgba(2, 227, 244, 0.2)",
                 boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
               }}>
-                <img 
-                  src="/Why%20Staffzone%20Solutions_.png" 
-                  alt="Staffzone Solutions Overview" 
-                  style={{ 
-                    width: "100%", 
-                    height: "100%", 
-                    objectFit: "cover", 
-                    position: "absolute", 
-                    inset: 0, 
-                    zIndex: 1
-                  }} 
+                <iframe 
+                  src="https://lottie.host/embed" 
+                  style={{ width: "100%", height: "100%", border: "none", position: "absolute", inset: 0 }}
+                  title="Animation"
                 />
               </div>
             </div>
