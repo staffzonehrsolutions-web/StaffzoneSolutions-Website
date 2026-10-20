@@ -127,15 +127,16 @@ export default function Home() {
       </section>
 
       <section className="section section-intro">
-        <div className="container intro-grid">
-          <div className="section-kicker">01 / What we do</div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
+        <div className="container">
+          <div className="section-kicker" style={{ marginBottom: "2rem" }}>01 / What we do</div>
+          
+          <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
             
-            {/* Lottie Animation on the Left */}
-            <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
+            {/* Lottie Animation on the Left (Red Box) */}
+            <div style={{ flex: "1 1 350px", display: "flex", justifyContent: "flex-start" }}>
               <div className="home-border-draw" style={{ 
                 width: "100%", 
-                maxWidth: "400px", 
+                maxWidth: "450px", 
                 aspectRatio: "1 / 1", 
                 borderRadius: "36px", 
                 backgroundColor: "transparent",
@@ -149,12 +150,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Text Content on the Right */}
-            <div style={{ flex: "1 1 400px" }}>
-              <h2 className="display-heading">Work is changing.<br /><span>People still matter most.</span></h2>
-              <div className="intro-bottom-row">
+            {/* Text Content on the Right (Yellow Box) */}
+            <div style={{ flex: "1 1 400px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <h2 className="display-heading" style={{ marginTop: 0 }}>Work is changing.<br /><span>People still matter most.</span></h2>
+              <div className="intro-bottom-row" style={{ marginTop: "1.5rem" }}>
                 <p className="body-large">From skilled manpower and payroll administration to campus drives, internships, and upskilling, we make workforce growth simpler, sharper, and more human.</p>
-                <Link href="/about" className="round-arrow" aria-label="Learn more about StaffzoneSolutions"><ArrowRight size={20} /></Link>
+                <Link href="/about" className="round-arrow" aria-label="Learn more about StaffzoneSolutions" style={{ marginTop: "1.5rem", display: "inline-flex" }}><ArrowRight size={20} /></Link>
               </div>
             </div>
 
