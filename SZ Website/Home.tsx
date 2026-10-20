@@ -1,6 +1,6 @@
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Compass, Layers3, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 import { Link } from "wouter";
-import { useEffect, useRef } from "react";
+import CerisePlunge from "./CerisePlunge";
 
 const services = [
   { icon: UsersRound, number: "01", title: "Recruitment & staffing", text: "Build high-performing teams with people who bring the right skills, mindset, and momentum." },
@@ -16,22 +16,6 @@ const audiencePaths = [
 ];
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (containerRef.current && !containerRef.current.querySelector('lottie-player')) {
-      const player = document.createElement('lottie-player');
-      player.setAttribute('src', '/animation.json');
-      player.setAttribute('background', 'transparent');
-      player.setAttribute('speed', '1');
-      player.setAttribute('loop', '');
-      player.setAttribute('autoplay', '');
-      (player as HTMLElement).style.width = '100%';
-      (player as HTMLElement).style.height = '100%';
-      containerRef.current.appendChild(player);
-    }
-  }, []);
-
   return (
     <div>
       <style>{`
@@ -132,7 +116,7 @@ export default function Home() {
           
           <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
             
-            {/* Lottie Animation on the Left (Red Box) */}
+            {/* CerisePlunge WebGL Animation on the Left */}
             <div style={{ flex: "1 1 350px", display: "flex", justifyContent: "flex-start" }}>
               <div className="home-border-draw" style={{ 
                 width: "100%", 
@@ -146,7 +130,8 @@ export default function Home() {
                 overflow: "hidden",
                 border: "1px solid rgba(2, 227, 244, 0.2)"
               }}>
-                <div ref={containerRef} style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }} />
+                {/* 3D Animation Component Placed Here */}
+                <CerisePlunge />
               </div>
             </div>
 
