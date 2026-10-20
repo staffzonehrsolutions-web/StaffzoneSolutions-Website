@@ -16,12 +16,19 @@ const audiencePaths = [
 ];
 
 export default function Home() {
-  const playerRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Ensures the player loads properly if script is present
-    if (playerRef.current) {
-      playerRef.current.load?.();
+    if (containerRef.current && !containerRef.current.querySelector('lottie-player')) {
+      const player = document.createElement('lottie-player');
+      player.setAttribute('src', 'your-file-name.json');
+      player.setAttribute('background', 'transparent');
+      player.setAttribute('speed', '1');
+      player.setAttribute('loop', '');
+      player.setAttribute('autoplay', '');
+      (player as HTMLElement).style.width = '100%';
+      (player as HTMLElement).style.height = '100%';
+      containerRef.current.appendChild(player);
     }
   }, []);
 
@@ -147,15 +154,7 @@ export default function Home() {
             boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
             border: "1px solid rgba(2, 227, 244, 0.2)"
           }}>
-            {React.createElement('lottie-player', {
-              ref: playerRef,
-              src: 'your-file-name.json',
-              background: 'transparent',
-              speed: '1',
-              style: { width: '100%', height: '100%' },
-              loop: true,
-              autoplay: true
-            })}
+            <div ref={containerRef} style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }} />
           </div>
         </div>
       </section>
