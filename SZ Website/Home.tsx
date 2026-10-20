@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     if (containerRef.current && !containerRef.current.querySelector('lottie-player')) {
       const player = document.createElement('lottie-player');
-      player.setAttribute('src', 'your-file-name.json');
+      player.setAttribute('src', '/animation.json');
       player.setAttribute('background', 'transparent');
       player.setAttribute('speed', '1');
       player.setAttribute('loop', '');
@@ -129,32 +129,35 @@ export default function Home() {
       <section className="section section-intro">
         <div className="container intro-grid">
           <div className="section-kicker">01 / What we do</div>
-          <div>
-            <h2 className="display-heading">Work is changing.<br /><span>People still matter most.</span></h2>
-            <div className="intro-bottom-row">
-              <p className="body-large">From skilled manpower and payroll administration to campus drives, internships, and upskilling, we make workforce growth simpler, sharper, and more human.</p>
-              <Link href="/about" className="round-arrow" aria-label="Learn more about StaffzoneSolutions"><ArrowRight size={20} /></Link>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem", alignItems: "center", justifyContent: "space-between" }}>
+            
+            {/* Text Content */}
+            <div style={{ flex: "1 1 400px" }}>
+              <h2 className="display-heading">Work is changing.<br /><span>People still matter most.</span></h2>
+              <div className="intro-bottom-row">
+                <p className="body-large">From skilled manpower and payroll administration to campus drives, internships, and upskilling, we make workforce growth simpler, sharper, and more human.</p>
+                <Link href="/about" className="round-arrow" aria-label="Learn more about StaffzoneSolutions"><ArrowRight size={20} /></Link>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section className="section" style={{ paddingBottom: "4rem", paddingTop: "0rem" }}>
-        <div className="container" style={{ display: "flex", justifyContent: "center" }}>
-          <div className="home-border-draw" style={{ 
-            width: "100%", 
-            maxWidth: "500px", 
-            aspectRatio: "1 / 1", 
-            borderRadius: "36px", 
-            backgroundColor: "#021227", 
-            display: "flex", 
-            alignItems: "center", 
-            justifyContent: "center", 
-            overflow: "hidden",
-            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-            border: "1px solid rgba(2, 227, 244, 0.2)"
-          }}>
-            <div ref={containerRef} style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }} />
+            {/* Lottie Animation Beside the Text */}
+            <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
+              <div className="home-border-draw" style={{ 
+                width: "100%", 
+                maxWidth: "400px", 
+                aspectRatio: "1 / 1", 
+                borderRadius: "36px", 
+                backgroundColor: "transparent", // Set to transparent
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                overflow: "hidden",
+                border: "1px solid rgba(2, 227, 244, 0.2)"
+              }}>
+                <div ref={containerRef} style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }} />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -164,111 +167,4 @@ export default function Home() {
           <div className="section-kicker">One mission · Two pathways</div>
           <div className="audience-header"><h2 className="section-heading">Progress looks different<br /><span>for everyone.</span></h2><p className="body-large">We create value on both sides of the opportunity—helping employers grow with confidence and helping people grow with purpose.</p></div>
           <div className="audience-grid">
-            {audiencePaths.map((path, index) => <article className={`audience-card audience-card-${index + 1} home-border-draw`} key={path.eyebrow}><div className="audience-card-number">0{index + 1}</div><div className="eyebrow">{path.eyebrow}</div><h3>{path.title}</h3><p>{path.text}</p><ul>{path.items.map((item) => <li key={item}><span />{item}</li>)}</ul><div className="audience-outcome">{path.outcome}</div><Link href={index === 0 ? "/services" : "/careers"} className="text-link text-link-dark">{index === 0 ? "Explore employer solutions" : "Explore career pathways"} <ArrowRight size={16} /></Link></article>)}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-services-preview">
-        <div className="container">
-          <div className="section-header-row">
-            <div>
-              <div className="section-kicker">02 / Our services</div>
-              <h2 className="section-heading">The right support<br /><span>at every stage.</span></h2>
-            </div>
-            <Link href="/services" className="text-link text-link-dark">View all services <ArrowRight size={16} /></Link>
-          </div>
-          <div className="service-preview-grid">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <Link href="/services" className="service-preview-card home-border-draw" key={service.number}>
-                  <div className="service-card-top"><span className="service-number">{service.number}</span><Icon size={22} strokeWidth={1.7} /></div>
-                  <div><h3>{service.title}</h3><p>{service.text}</p></div>
-                  <span className="card-arrow"><ArrowRight size={17} /></span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section proof-section">
-        <div className="container proof-grid">
-          <div className="proof-image-card home-border-draw" style={{ 
-            position: "relative", 
-            overflow: "hidden", 
-            borderRadius: "36px", 
-            aspectRatio: "1 / 1",
-            backgroundColor: "#021227", 
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
-          }}>
-            <svg className="animate-spin" style={{ position: "absolute", width: "40px", height: "40px", color: "#94a3b8" }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <style>
-                {`@keyframes spin { 100% { transform: rotate(360deg); } } .animate-spin { animation: spin 1s linear infinite; }`}
-              </style>
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" opacity="0.25"></circle>
-              <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" opacity="0.75"></path>
-            </svg>
-
-            <img 
-              src="/Why%20Staffzone%20Solutions_.png" 
-              alt="Why Staffzone Team" 
-              style={{ 
-                width: "100%", 
-                height: "100%", 
-                objectFit: "cover", 
-                position: "absolute", 
-                inset: 0, 
-                zIndex: 1,
-                padding: "0px"
-              }} 
-            />
-            
-            <div className="proof-caption" style={{ 
-              position: "absolute", 
-              bottom: "24px", 
-              left: "24px", 
-              zIndex: 2,
-              backgroundColor: "#0f172a", 
-              color: "#ffffff",
-              padding: "8px 16px",
-              borderRadius: "999px",
-              fontSize: "13px",
-              fontWeight: "500",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              border: "1px solid rgba(255,255,255,0.1)"
-            }}>
-              <span className="caption-dot" style={{ width: "8px", height: "8px", backgroundColor: "#22d3ee", borderRadius: "50%" }} /> 
-              Real people. Real progress.
-            </div>
-          </div>
-          <div className="proof-copy">
-            <div className="section-kicker">03 / Why Staffzone Solutions? </div>
-            <h2 className="section-heading">Not just a vendor.<br /><span>A team on your side.</span></h2>
-            <p className="body-large">We combine market insight, operational rigour, and a genuine interest in people to help you create workplaces where good work can happen.</p>
-            <ul className="check-list">
-              <li><Check size={16} /> Senior attention on every engagement</li>
-              <li><Check size={16} /> Transparent, human communication</li>
-              <li><Check size={16} /> Solutions designed to keep working</li>
-            </ul>
-            <Link href="/about" className="button button-outline">Meet StaffzoneSolutions <ArrowRight size={16} /></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="cta-section">
-        <div className="container cta-inner">
-          <div className="cta-mark"><Layers3 size={25} /></div>
-          <div><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Start a conversation</div><h2>Let&apos;s make your next move<br /><em>your best one yet.</em></h2></div>
-          <Link href="/contact" className="button button-accent cta-button">Talk to our team <ArrowUpRight size={17} /></Link>
-        </div>
-      </section>
-    </div>
-  );
-}
+            {audiencePaths.map((path,
