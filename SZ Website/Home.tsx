@@ -31,7 +31,7 @@ export default function Home() {
           width: 0;
           height: 0;
           box-sizing: border-box;
-          border: 2px solid transparent;
+          border: 4px solid transparent;
           border-radius: inherit;
           pointer-events: none;
           z-index: 10;
@@ -183,7 +183,7 @@ export default function Home() {
               style={{ 
                 width: "100%", 
                 height: "100%", 
-                objectFit: "contain", 
+                objectFit: "cover", 
                 position: "absolute", 
                 inset: 0, 
                 zIndex: 1,
