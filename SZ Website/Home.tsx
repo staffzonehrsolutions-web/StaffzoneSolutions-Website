@@ -38,7 +38,6 @@ export default function Home() {
           z-index: 10;
         }
 
-        /* Draw the top edge, then the left edge. */
         .home-border-draw::before {
           top: 0;
           left: 0;
@@ -47,7 +46,6 @@ export default function Home() {
           transition: width 0.25s ease, height 0.25s ease 0.25s;
         }
 
-        /* Complete the border from the bottom-right corner. */
         .home-border-draw::after {
           right: 0;
           bottom: 0;
@@ -91,7 +89,7 @@ export default function Home() {
             <div className="hero-note"><span className="note-line" /> Andhra Pradesh roots · National reach</div>
           </div>
           <div className="hero-visual reveal-up reveal-delay-2" aria-label="A collaborative team meeting">
-            {/* CerisePlunge Component placed inside the top hero visual box */}
+            {/* CerisePlunge Component placed inside the top hero visual box behind the stats */}
             <div style={{ position: "absolute", inset: 0, zIndex: 1, overflow: "hidden", borderRadius: "inherit" }}>
               <CerisePlunge />
             </div>
@@ -119,7 +117,7 @@ export default function Home() {
           
           <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
             
-            {/* Lottie Animation Container for animation.json below 01 / What we do */}
+            {/* Animation Container for animation.json below 01 / What we do */}
             <div style={{ flex: "1 1 350px", display: "flex", justifyContent: "flex-start" }}>
               <div className="home-border-draw" style={{ 
                 width: "100%", 
@@ -135,11 +133,9 @@ export default function Home() {
                 border: "1px solid rgba(2, 227, 244, 0.2)",
                 boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
               }}>
-                <iframe 
-                  src="https://lottie.host/embed" 
-                  style={{ width: "100%", height: "100%", border: "none", position: "absolute", inset: 0 }}
-                  title="Animation"
-                />
+                <object data="/animation.json" type="application/json" style={{ width: "100%", height: "100%", pointerEvents: "none" }}>
+                  <img src="/Why%20Staffzone%20Solutions_.png" alt="Animation Fallback" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </object>
               </div>
             </div>
 
