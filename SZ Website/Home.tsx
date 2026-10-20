@@ -1,3 +1,4 @@
+```tsx
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Compass, Layers3, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 import { Link } from "wouter";
 
@@ -122,6 +123,33 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section" style={{ paddingBottom: "4rem" }}>
+        <div className="container" style={{ display: "flex", justifyContent: "center" }}>
+          <div className="home-border-draw" style={{ 
+            width: "100%", 
+            maxWidth: "600px", 
+            aspectRatio: "16 / 9", 
+            borderRadius: "24px", 
+            backgroundColor: "#021227", 
+            display: "flex", 
+            alignItems: "center", 
+            justifyContent: "center", 
+            overflow: "hidden",
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+            border: "1px solid rgba(2, 227, 244, 0.2)"
+          }}>
+            <lottie-player 
+              src="your-file-name.json" 
+              background="transparent" 
+              speed="1" 
+              style={{ width: "100%", height: "100%" }} 
+              loop 
+              autoplay>
+            </lottie-player>
+          </div>
+        </div>
+      </section>
+
       <section className="section audience-section">
         <div className="container">
           <div className="section-kicker">One mission · Two pathways</div>
@@ -235,3 +263,5 @@ export default function Home() {
     </div>
   );
 }
+
+```
