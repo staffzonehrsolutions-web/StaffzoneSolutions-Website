@@ -10,9 +10,22 @@ const services = [
 ];
 
 const partnerTypes = ["Startups", "Scale-ups", "Enterprise", "Public sector"];
+
 const audiencePaths = [
-  { eyebrow: "For employers", title: "Build the workforce your business needs.", text: "End-to-end HR support designed to simplify workforce management and strengthen day-to-day operations.", items: ["Recruitment & staffing", "Payroll & compliance", "Workforce continuity", "Campus drives & internships", "Upskilling & project placements"], outcome: "Faster hiring · Lower HR overhead · Compliance assurance" },
-  { eyebrow: "For students & job seekers", title: "Turn ambition into opportunity.", text: "Practical pathways that help you learn, build confidence, and connect directly with employers.", items: ["Internships & project work", "Job drives & placement support", "Technical & soft-skill upskilling", "Resume & interview preparation", "Career guidance & mentorship"], outcome: "Real exposure · Better skills · Direct pathways to employment" },
+  { 
+    eyebrow: "For employers", 
+    title: "Build the workforce your business needs.", 
+    text: "End-to-end HR support designed to simplify workforce management and strengthen day-to-day operations.", 
+    items: ["Recruitment & staffing", "Payroll & compliance", "Workforce continuity", "Campus drives & internships", "Upskilling & project placements"], 
+    outcome: "Faster hiring · Lower HR overhead · Compliance assurance" 
+  },
+  { 
+    eyebrow: "For students & job seekers", 
+    title: "Turn ambition into opportunity.", 
+    text: "Practical pathways that help you learn, build confidence, and connect directly with employers.", 
+    items: ["Internships & project work", "Job drives & placement support", "Technical & soft-skill upskilling", "Resume & interview preparation", "Career guidance & mentorship"], 
+    outcome: "Real exposure · Better skills · Direct pathways to employment" 
+  },
 ];
 
 export default function Home() {
@@ -24,7 +37,6 @@ export default function Home() {
           position: relative;
           isolation: isolate;
         }
-
         .home-border-draw::before,
         .home-border-draw::after {
           content: "";
@@ -37,7 +49,6 @@ export default function Home() {
           pointer-events: none;
           z-index: 10;
         }
-
         .home-border-draw::before {
           top: 0;
           left: 0;
@@ -45,7 +56,6 @@ export default function Home() {
           border-left-color: #02e3f4;
           transition: width 0.25s ease, height 0.25s ease 0.25s;
         }
-
         .home-border-draw::after {
           right: 0;
           bottom: 0;
@@ -53,7 +63,6 @@ export default function Home() {
           border-bottom-color: #02e3f4;
           transition: width 0.25s ease 0.5s, height 0.25s ease 0.75s;
         }
-
         .home-border-draw:hover::before,
         .home-border-draw:hover::after,
         .home-border-draw:focus-visible::before,
@@ -63,7 +72,6 @@ export default function Home() {
           width: 100%;
           height: 100%;
         }
-
         @media (prefers-reduced-motion: reduce) {
           .home-border-draw::before,
           .home-border-draw::after {
@@ -71,6 +79,7 @@ export default function Home() {
           }
         }
       `}</style>
+
       <section className="hero-section">
         <div className="hero-glow hero-glow-one" />
         <div className="hero-glow hero-glow-two" />
@@ -106,7 +115,9 @@ export default function Home() {
         </div>
         <div className="hero-marquee" aria-label="StaffzoneSolutions capabilities">
           <div className="marquee-track">
-            {[...partnerTypes, ...partnerTypes].map((partner, index) => <span key={`${partner}-${index}`}><i /> {partner}</span>)}
+            {[...partnerTypes, ...partnerTypes].map((partner, index) => (
+              <span key={`${partner}-${index}`}><i /> {partner}</span>
+            ))}
           </div>
         </div>
       </section>
@@ -114,31 +125,17 @@ export default function Home() {
       <section className="section section-intro">
         <div className="container">
           <div className="section-kicker" style={{ marginBottom: "2rem" }}>01 / What we do</div>
-          
           <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
-            
-            {/* Animation Container for animation.json below 01 / What we do */}
+            {/* Image Container below 01 / What we do */}
             <div style={{ flex: "1 1 350px", display: "flex", justifyContent: "flex-start" }}>
-              <div className="home-border-draw" style={{ 
-                width: "100%", 
-                maxWidth: "450px", 
-                aspectRatio: "1 / 1", 
-                borderRadius: "36px", 
-                backgroundColor: "#021227",
-                display: "flex", 
-                alignItems: "center", 
-                justifyContent: "center", 
-                overflow: "hidden",
-                position: "relative",
-                border: "1px solid rgba(2, 227, 244, 0.2)",
-                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
-              }}>
-                <object data="/animation.json" type="application/json" style={{ width: "100%", height: "100%", pointerEvents: "none" }}>
-                  <img src="/Why%20Staffzone%20Solutions_.png" alt="Animation Fallback" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                </object>
+              <div className="home-border-draw" style={{ width: "100%", maxWidth: "450px", aspectRatio: "1 / 1", borderRadius: "36px", backgroundColor: "#021227", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative", border: "1px solid rgba(2, 227, 244, 0.2)", boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}>
+                <img 
+                  src="/Why%20Staffzone%20Solutions_.png" 
+                  alt="Work is changing" 
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                />
               </div>
             </div>
-
             {/* Text Content on the Right */}
             <div style={{ flex: "1 1 400px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <h2 className="display-heading" style={{ marginTop: 0 }}>Work is changing.<br /><span>People still matter most.</span></h2>
@@ -147,7 +144,6 @@ export default function Home() {
                 <Link href="/about" className="round-arrow" aria-label="Learn more about StaffzoneSolutions" style={{ marginTop: "1.5rem", display: "inline-flex" }}><ArrowRight size={20} /></Link>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -155,9 +151,28 @@ export default function Home() {
       <section className="section audience-section">
         <div className="container">
           <div className="section-kicker">One mission · Two pathways</div>
-          <div className="audience-header"><h2 className="section-heading">Progress looks different<br /><span>for everyone.</span></h2><p className="body-large">We create value on both sides of the opportunity—helping employers grow with confidence and helping people grow with purpose.</p></div>
+          <div className="audience-header">
+            <h2 className="section-heading">Progress looks different<br /><span>for everyone.</span></h2>
+            <p className="body-large">We create value on both sides of the opportunity—helping employers grow with confidence and helping people grow with purpose.</p>
+          </div>
           <div className="audience-grid">
-            {audiencePaths.map((path, index) => <article className={`audience-card audience-card-${index + 1} home-border-draw`} key={path.eyebrow}><div className="audience-card-number">0{index + 1}</div><div className="eyebrow">{path.eyebrow}</div><h3>{path.title}</h3><p>{path.text}</p><ul>{path.items.map((item) => <li key={item}><span />{item}</li>)}</ul><div className="audience-outcome">{path.outcome}</div><Link href={index === 0 ? "/services" : "/careers"} className="text-link text-link-dark">{index === 0 ? "Explore employer solutions" : "Explore career pathways"} <ArrowRight size={16} /></Link></article>)}
+            {audiencePaths.map((path, index) => (
+              <article className={`audience-card audience-card-${index + 1} home-border-draw`} key={path.eyebrow}>
+                <div className="audience-card-number">0{index + 1}</div>
+                <div className="eyebrow">{path.eyebrow}</div>
+                <h3>{path.title}</h3>
+                <p>{path.text}</p>
+                <ul>
+                  {path.items.map((item) => (
+                    <li key={item}><span />{item}</li>
+                  ))}
+                </ul>
+                <div className="audience-outcome">{path.outcome}</div>
+                <Link href={index === 0 ? "/services" : "/careers"} className="text-link text-link-dark">
+                  {index === 0 ? "Explore employer solutions" : "Explore career pathways"} <ArrowRight size={16} />
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -176,8 +191,14 @@ export default function Home() {
               const Icon = service.icon;
               return (
                 <Link href="/services" className="service-preview-card home-border-draw" key={service.number}>
-                  <div className="service-card-top"><span className="service-number">{service.number}</span><Icon size={22} strokeWidth={1.7} /></div>
-                  <div><h3>{service.title}</h3><p>{service.text}</p></div>
+                  <div className="service-card-top">
+                    <span className="service-number">{service.number}</span>
+                    <Icon size={22} strokeWidth={1.7} />
+                  </div>
+                  <div>
+                    <h3>{service.title}</h3>
+                    <p>{service.text}</p>
+                  </div>
                   <span className="card-arrow"><ArrowRight size={17} /></span>
                 </Link>
               );
@@ -188,53 +209,14 @@ export default function Home() {
 
       <section className="section proof-section">
         <div className="container proof-grid">
-          <div className="proof-image-card home-border-draw" style={{ 
-            position: "relative", 
-            overflow: "hidden", 
-            borderRadius: "36px", 
-            aspectRatio: "1 / 1",
-            backgroundColor: "#021227", 
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
-          }}>
-            <img 
-              src="/Why%20Staffzone%20Solutions_.png" 
-              alt="Why Staffzone Team" 
-              style={{ 
-                width: "100%", 
-                height: "100%", 
-                objectFit: "cover", 
-                position: "absolute", 
-                inset: 0, 
-                zIndex: 1,
-                padding: "0px"
-              }} 
-            />
-            
-            <div className="proof-caption" style={{ 
-              position: "absolute", 
-              bottom: "24px", 
-              left: "24px", 
-              zIndex: 2,
-              backgroundColor: "#0f172a", 
-              color: "#ffffff",
-              padding: "8px 16px",
-              borderRadius: "999px",
-              fontSize: "13px",
-              fontWeight: "500",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              border: "1px solid rgba(255,255,255,0.1)"
-            }}>
-              <span className="caption-dot" style={{ width: "8px", height: "8px", backgroundColor: "#22d3ee", borderRadius: "50%" }} /> 
-              Real people. Real progress.
+          <div className="proof-image-card home-border-draw" style={{ position: "relative", overflow: "hidden", borderRadius: "36px", aspectRatio: "1 / 1", backgroundColor: "#021227", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}>
+            <img src="/Why%20Staffzone%20Solutions_.png" alt="Why Staffzone Team" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0, zIndex: 1, padding: "0px" }} />
+            <div className="proof-caption" style={{ position: "absolute", bottom: "24px", left: "24px", zIndex: 2, backgroundColor: "#0f172a", color: "#ffffff", padding: "8px 16px", borderRadius: "999px", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "8px", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <span className="caption-dot" style={{ width: "8px", height: "8px", backgroundColor: "#22d3ee", borderRadius: "50%" }} /> Real people. Real progress.
             </div>
           </div>
           <div className="proof-copy">
-            <div className="section-kicker">03 / Why Staffzone Solutions? </div>
+            <div className="section-kicker">03 / Why Staffzone Solutions?</div>
             <h2 className="section-heading">Not just a vendor.<br /><span>A team on your side.</span></h2>
             <p className="body-large">We combine market insight, operational rigour, and a genuine interest in people to help you create workplaces where good work can happen.</p>
             <ul className="check-list">
@@ -250,7 +232,10 @@ export default function Home() {
       <section className="cta-section">
         <div className="container cta-inner">
           <div className="cta-mark"><Layers3 size={25} /></div>
-          <div><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Start a conversation</div><h2>Let&apos;s make your next move<br /><em>your best one yet.</em></h2></div>
+          <div>
+            <div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Start a conversation</div>
+            <h2>Let&apos;s make your next move<br /><em>your best one yet.</em></h2>
+          </div>
           <Link href="/contact" className="button button-accent cta-button">Talk to our team <ArrowUpRight size={17} /></Link>
         </div>
       </section>
