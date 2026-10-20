@@ -162,7 +162,7 @@ export default function Home() {
             position: "relative", 
             overflow: "hidden", 
             borderRadius: "36px", 
-            minHeight: "450px",
+            aspectRatio: "1 / 1",
             backgroundColor: "#021227", 
             display: "flex",
             alignItems: "center",
@@ -187,7 +187,7 @@ export default function Home() {
                 position: "absolute", 
                 inset: 0, 
                 zIndex: 1,
-                padding: "20px"
+                padding: "0px"
               }} 
             />
             
