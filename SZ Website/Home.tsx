@@ -131,7 +131,7 @@ export default function Home() {
           <div className="section-kicker">01 / What we do</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
             
-            {/* Lottie Animation Now on the Left */}
+            {/* Lottie Animation on the Left */}
             <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
               <div className="home-border-draw" style={{ 
                 width: "100%", 
@@ -149,7 +149,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Text Content Now on the Right */}
+            {/* Text Content on the Right */}
             <div style={{ flex: "1 1 400px" }}>
               <h2 className="display-heading">Work is changing.<br /><span>People still matter most.</span></h2>
               <div className="intro-bottom-row">
@@ -252,3 +252,26 @@ export default function Home() {
             </div>
           </div>
           <div className="proof-copy">
+            <div className="section-kicker">03 / Why Staffzone Solutions? </div>
+            <h2 className="section-heading">Not just a vendor.<br /><span>A team on your side.</span></h2>
+            <p className="body-large">We combine market insight, operational rigour, and a genuine interest in people to help you create workplaces where good work can happen.</p>
+            <ul className="check-list">
+              <li><Check size={16} /> Senior attention on every engagement</li>
+              <li><Check size={16} /> Transparent, human communication</li>
+              <li><Check size={16} /> Solutions designed to keep working</li>
+            </ul>
+            <Link href="/about" className="button button-outline">Meet StaffzoneSolutions <ArrowRight size={16} /></Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <div className="container cta-inner">
+          <div className="cta-mark"><Layers3 size={25} /></div>
+          <div><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Start a conversation</div><h2>Let&apos;s make your next move<br /><em>your best one yet.</em></h2></div>
+          <Link href="/contact" className="button button-accent cta-button">Talk to our team <ArrowUpRight size={17} /></Link>
+        </div>
+      </section>
+    </div>
+  );
+}
