@@ -1,6 +1,6 @@
-```tsx
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Compass, Layers3, ShieldCheck, Sparkles, UsersRound } from "lucide-react";
 import { Link } from "wouter";
+import { useEffect, useRef } from "react";
 
 const services = [
   { icon: UsersRound, number: "01", title: "Recruitment & staffing", text: "Build high-performing teams with people who bring the right skills, mindset, and momentum." },
@@ -16,6 +16,15 @@ const audiencePaths = [
 ];
 
 export default function Home() {
+  const playerRef = useRef<any>(null);
+
+  useEffect(() => {
+    // Ensures the player loads properly if script is present
+    if (playerRef.current) {
+      playerRef.current.load?.();
+    }
+  }, []);
+
   return (
     <div>
       <style>{`
@@ -123,13 +132,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingBottom: "4rem" }}>
+      <section className="section" style={{ paddingBottom: "4rem", paddingTop: "0rem" }}>
         <div className="container" style={{ display: "flex", justifyContent: "center" }}>
           <div className="home-border-draw" style={{ 
             width: "100%", 
-            maxWidth: "600px", 
-            aspectRatio: "16 / 9", 
-            borderRadius: "24px", 
+            maxWidth: "500px", 
+            aspectRatio: "1 / 1", 
+            borderRadius: "36px", 
             backgroundColor: "#021227", 
             display: "flex", 
             alignItems: "center", 
@@ -138,14 +147,15 @@ export default function Home() {
             boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
             border: "1px solid rgba(2, 227, 244, 0.2)"
           }}>
-            <lottie-player 
-              src="your-file-name.json" 
-              background="transparent" 
-              speed="1" 
-              style={{ width: "100%", height: "100%" }} 
-              loop 
-              autoplay>
-            </lottie-player>
+            {React.createElement('lottie-player', {
+              ref: playerRef,
+              src: 'your-file-name.json',
+              background: 'transparent',
+              speed: '1',
+              style: { width: '100%', height: '100%' },
+              loop: true,
+              autoplay: true
+            })}
           </div>
         </div>
       </section>
@@ -263,5 +273,3 @@ export default function Home() {
     </div>
   );
 }
-
-```
