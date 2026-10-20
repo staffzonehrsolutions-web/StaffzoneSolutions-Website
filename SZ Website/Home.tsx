@@ -98,7 +98,6 @@ export default function Home() {
             <div className="hero-note"><span className="note-line" /> Andhra Pradesh roots · National reach</div>
           </div>
           <div className="hero-visual reveal-up reveal-delay-2" aria-label="A collaborative team meeting">
-            {/* CerisePlunge Component placed inside the top hero visual box behind the stats */}
             <div style={{ position: "absolute", inset: 0, zIndex: 1, overflow: "hidden", borderRadius: "inherit" }}>
               <CerisePlunge />
             </div>
@@ -126,17 +125,16 @@ export default function Home() {
         <div className="container">
           <div className="section-kicker" style={{ marginBottom: "2rem" }}>01 / What we do</div>
           <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "4rem", alignItems: "center", justifyContent: "space-between" }}>
-            {/* Image Container below 01 / What we do */}
+            {/* Uses work-is-changing.png beside Work is changing section */}
             <div style={{ flex: "1 1 350px", display: "flex", justifyContent: "flex-start" }}>
               <div className="home-border-draw" style={{ width: "100%", maxWidth: "450px", aspectRatio: "1 / 1", borderRadius: "36px", backgroundColor: "#021227", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative", border: "1px solid rgba(2, 227, 244, 0.2)", boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}>
                 <img 
-                  src="/Why%20Staffzone%20Solutions_.png" 
+                  src="/work-is-changing.png" 
                   alt="Work is changing" 
                   style={{ width: "100%", height: "100%", objectFit: "cover" }} 
                 />
               </div>
             </div>
-            {/* Text Content on the Right */}
             <div style={{ flex: "1 1 400px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <h2 className="display-heading" style={{ marginTop: 0 }}>Work is changing.<br /><span>People still matter most.</span></h2>
               <div className="intro-bottom-row" style={{ marginTop: "1.5rem" }}>
@@ -209,6 +207,7 @@ export default function Home() {
 
       <section className="section proof-section">
         <div className="container proof-grid">
+          {/* Keeps Why Staffzone Solutions_.png safely untouched beside Not just a vendor */}
           <div className="proof-image-card home-border-draw" style={{ position: "relative", overflow: "hidden", borderRadius: "36px", aspectRatio: "1 / 1", backgroundColor: "#021227", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}>
             <img src="/Why%20Staffzone%20Solutions_.png" alt="Why Staffzone Team" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0, zIndex: 1, padding: "0px" }} />
             <div className="proof-caption" style={{ position: "absolute", bottom: "24px", left: "24px", zIndex: 2, backgroundColor: "#0f172a", color: "#ffffff", padding: "8px 16px", borderRadius: "999px", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "8px", border: "1px solid rgba(255,255,255,0.1)" }}>
