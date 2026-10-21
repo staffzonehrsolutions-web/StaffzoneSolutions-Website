@@ -7,7 +7,6 @@
   width: 100%;
 }
 
-/* Container size increased by 25% (600px -> 750px width, 250px -> 312px height) */
 .beam-container {
   position: relative;
   width: 100%;
@@ -39,21 +38,49 @@
   width: 3px;
   background: #a855f7;
   box-shadow: 0 0 15px #a855f7, 0 0 30px #a855f7;
-  z-index: 3;
+  z-index: 10;
 }
 
 .card-stream {
   position: relative;
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
   z-index: 1;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 44%,
+    rgba(0, 0, 0, 0) 56%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 44%,
+    rgba(0, 0, 0, 0) 56%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
-/* Card size increased by 25% */
+.card-line {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.card-line.css-animated {
+  animation: scrollCards 16s linear infinite;
+}
+
 .credit-card {
   width: 275px;
   height: 162px;
+  flex-shrink: 0;
   background: linear-gradient(135deg, #1e1e2f 0%, #0a0a12 100%);
   border: 1px solid #33334d;
   border-radius: 12px;
@@ -62,13 +89,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Dissolving mask effect across scanner line */
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 55%);
-  mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 55%);
-}
-
-.credit-card.moving {
-  animation: slideAcross 4s linear infinite;
 }
 
 .card-chip {
@@ -92,19 +112,11 @@
   letter-spacing: 1px;
 }
 
-@keyframes slideAcross {
+@keyframes scrollCards {
   0% {
-    transform: translateX(-180%);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(180%);
-    opacity: 0;
+    transform: translateX(-50%);
   }
 }
