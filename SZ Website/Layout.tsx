@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowUpRight, Instagram, Linkedin, Menu, Twitter, X } from "lucide-react";
 import logo from './StaffzoneSolutionsLOGO.jpeg';
+import ParticleDrift from "./ParticleDrift";
 
 const navItems = [
   { label: "About", href: "/about" },
@@ -16,10 +17,6 @@ const navItems = [
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className={`brand ${light ? "brand-light" : ""}`} aria-label="StaffzoneSolutions home">
-      {/* 
-        This is what changed below! 
-        Replaced the old text string with the {logo} variable you imported. 
-      */}
       <img className="brand-logo" src={logo} alt="Staffzone Solutions — For a Better Tomorrow" />
     </Link>
   );
@@ -44,8 +41,12 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="site-shell">
-      <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
-        <div className="container header-inner">
+      <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`} style={{ position: "relative", overflow: "hidden" }}>
+        {/* Particle Drift Graphic behind the Header Blue Area */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
+          <ParticleDrift />
+        </div>
+        <div className="container header-inner" style={{ position: "relative", zIndex: 1 }}>
           <Logo light={!scrolled} />
           <nav className="desktop-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
@@ -61,7 +62,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
         {mobileOpen && (
-          <nav className="mobile-nav" aria-label="Mobile navigation">
+          <nav className="mobile-nav" aria-label="Mobile navigation" style={{ position: "relative", zIndex: 1 }}>
             <div className="container mobile-nav-inner">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href} className={`mobile-nav-link ${location === item.href ? "mobile-nav-link-active" : ""} ${item.href === "/" ? "mobile-home-link" : ""}`}>
@@ -81,8 +82,12 @@ export default function Layout({ children }: { children: ReactNode }) {
         </Link>
       )}
 
-      <footer className="site-footer">
-        <div className="container footer-top">
+      <footer className="site-footer" style={{ position: "relative", overflow: "hidden" }}>
+        {/* Particle Drift Graphic behind the Footer Blue Area */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
+          <ParticleDrift />
+        </div>
+        <div className="container footer-top" style={{ position: "relative", zIndex: 1 }}>
           <div className="footer-brand-block">
             <Logo light />
             <p>People-first staffing, HR, and career solutions for organisations and professionals ready to grow.</p>
@@ -110,7 +115,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <Link href="/contact" className="footer-arrow-link">Subscribe to updates <ArrowUpRight size={15} /></Link>
           </div>
         </div>
-        <div className="container footer-bottom">
+        <div className="container footer-bottom" style={{ position: "relative", zIndex: 1 }}>
           <span>© {new Date().getFullYear()} StaffzoneSolutions. All rights reserved.</span>
           <span>Built for teams that move people forward.</span>
         </div>
