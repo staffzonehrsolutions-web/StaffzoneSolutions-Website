@@ -41,12 +41,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="site-shell">
-      <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`} style={{ position: "relative", overflow: "hidden" }}>
-        {/* Particle Drift Graphic behind the Header Blue Area */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
-          <ParticleDrift />
-        </div>
-        <div className="container header-inner" style={{ position: "relative", zIndex: 1 }}>
+      {/* Header restored to its original state */}
+      <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
+        <div className="container header-inner">
           <Logo light={!scrolled} />
           <nav className="desktop-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
@@ -62,7 +59,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
         {mobileOpen && (
-          <nav className="mobile-nav" aria-label="Mobile navigation" style={{ position: "relative", zIndex: 1 }}>
+          <nav className="mobile-nav" aria-label="Mobile navigation">
             <div className="container mobile-nav-inner">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href} className={`mobile-nav-link ${location === item.href ? "mobile-nav-link-active" : ""} ${item.href === "/" ? "mobile-home-link" : ""}`}>
@@ -74,7 +71,20 @@ export default function Layout({ children }: { children: ReactNode }) {
         )}
       </header>
 
-      <main><div key={location} className="route-stage">{children}</div></main>
+      <main>
+        <div key={location} className="route-stage" style={{ position: "relative" }}>
+          {/* Particle drift graphic in the top blue area for all pages EXCEPT Home ("/") */}
+          {location !== "/" && (
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "350px", overflow: "hidden", zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
+              <ParticleDrift />
+            </div>
+          )}
+          {/* Page content rendered above the graphic */}
+          <div style={{ position: "relative", zIndex: 1 }}>
+            {children}
+          </div>
+        </div>
+      </main>
 
       {scrolled && (location === "/about" || location === "/services") && (
         <Link href="/contact" className="floating-talk" aria-label="Let's talk with StaffzoneSolutions">
