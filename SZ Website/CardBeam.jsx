@@ -2,6 +2,13 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import "./CardBeam.css";
 
+const cardData = [
+  { number: "1234 5678 9000 0001", name: "STAFFZONE 01" },
+  { number: "1234 5678 9000 0002", name: "STAFFZONE 02" },
+  { number: "1234 5678 9000 0003", name: "STAFFZONE 03" },
+  { number: "1234 5678 9000 0004", name: "STAFFZONE 04" },
+];
+
 export default function CardBeam() {
   const particleCanvasRef = useRef(null);
 
@@ -63,10 +70,21 @@ export default function CardBeam() {
         <div className="scanner-line" />
 
         <div className="card-stream">
-          <div className="credit-card moving">
-            <div className="card-chip" />
-            <div className="card-number">1234 5678 9000 0000</div>
-            <div className="card-name">STAFFZONE</div>
+          <div className="card-line css-animated">
+            {cardData.map((card, idx) => (
+              <div className="credit-card" key={`card-1-${idx}`}>
+                <div className="card-chip" />
+                <div className="card-number">{card.number}</div>
+                <div className="card-name">{card.name}</div>
+              </div>
+            ))}
+            {cardData.map((card, idx) => (
+              <div className="credit-card" key={`card-2-${idx}`}>
+                <div className="card-chip" />
+                <div className="card-number">{card.number}</div>
+                <div className="card-name">{card.name}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
