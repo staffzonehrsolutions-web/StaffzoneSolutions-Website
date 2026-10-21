@@ -39,8 +39,6 @@ export default function Layout({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isInnerPage = location !== "/";
-
   return (
     <div className="site-shell">
       <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
@@ -73,27 +71,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       </header>
 
       <main>
-        <div key={location} className="route-stage" style={{ position: "relative" }}>
-          {/* Particle Drift positioned strictly behind the top Hero area on Inner Pages */}
-          {isInnerPage && (
-            <div 
-              style={{ 
-                position: "absolute", 
-                top: 0, 
-                left: 0, 
-                right: 0, 
-                height: "520px", 
-                overflow: "hidden", 
-                zIndex: 0 
-              }}
-            >
-              <ParticleDrift />
-            </div>
-          )}
-
-          <div style={{ position: "relative", zIndex: 1 }}>
-            {children}
-          </div>
+        <div key={location} className="route-stage">
+          {children}
         </div>
       </main>
 
