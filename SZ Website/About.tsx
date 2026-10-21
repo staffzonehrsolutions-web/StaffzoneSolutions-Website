@@ -80,7 +80,6 @@ export default function About() {
   const [valuesVisible, setValuesVisible] = useState(false);
   const valuesRef = useRef<HTMLElement>(null);
 
-  // Keep the AtlasSash globe at 90% of its circular frame on desktop and mobile.
   const atlasFrameRef = useRef<HTMLDivElement>(null);
   const [atlasSize, setAtlasSize] = useState(468);
 
@@ -129,14 +128,47 @@ export default function About() {
 
   return (
     <div>
-      <section className="page-hero page-hero-about" style={{ position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "auto" }}>
+      <section 
+        className="page-hero page-hero-about" 
+        style={{ 
+          position: "relative", 
+          overflow: "hidden", 
+          isolation: "isolate" 
+        }}
+      >
+        {/* Interactive Particle Layer */}
+        <div 
+          style={{ 
+            position: "absolute", 
+            top: 0, 
+            left: 0, 
+            width: "100%", 
+            height: "100%", 
+            zIndex: 1, 
+            pointerEvents: "auto" 
+          }}
+        >
           <ParticleDrift />
         </div>
-        <div className="container page-hero-inner" style={{ position: "relative", zIndex: 1, pointerEvents: "none" }}>
-          <div className="eyebrow eyebrow-light" style={{ pointerEvents: "auto" }}><span className="eyebrow-dot" /> About StaffzoneSolutions</div>
-          <h1 style={{ pointerEvents: "auto" }}>Better work starts<br /><em>with the right people.</em></h1>
-          <p style={{ pointerEvents: "auto" }}>Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.</p>
+
+        {/* Text Layer on top with pointer-events passthrough */}
+        <div 
+          className="container page-hero-inner" 
+          style={{ 
+            position: "relative", 
+            zIndex: 2, 
+            pointerEvents: "none" 
+          }}
+        >
+          <div className="eyebrow eyebrow-light" style={{ pointerEvents: "auto" }}>
+            <span className="eyebrow-dot" /> About StaffzoneSolutions
+          </div>
+          <h1 style={{ pointerEvents: "auto" }}>
+            Better work starts<br /><em>with the right people.</em>
+          </h1>
+          <p style={{ pointerEvents: "auto" }}>
+            Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.
+          </p>
         </div>
       </section>
 
