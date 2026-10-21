@@ -2,11 +2,15 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import "./CardBeam.css";
 
-const cardData = [
-  { number: "1234 5678 9000 0001", name: "STAFFZONE 01" },
-  { number: "1234 5678 9000 0002", name: "STAFFZONE 02" },
-  { number: "1234 5678 9000 0003", name: "STAFFZONE 03" },
-  { number: "1234 5678 9000 0004", name: "STAFFZONE 04" },
+// Path array referencing all 7 uploaded images from the public directory
+const cardImages = [
+  "/my-card-1.png",
+  "/my-card-2.png",
+  "/my-card-3.png",
+  "/my-card-4.png",
+  "/my-card-5.png",
+  "/my-card-6.png",
+  "/my-card-7.png",
 ];
 
 function generateCode(width, height) {
@@ -130,24 +134,25 @@ export default function CardBeam() {
         <div className="scanner-line" ref={lineRef} />
         <div className="card-stream">
           <div className="card-line css-animated">
-            {[...cardData, ...cardData, ...cardData].map((card, idx) => (
+            {[...cardImages, ...cardImages].map((imgSrc, idx) => (
               <div className="card-wrapper" key={idx}>
+                {/* Clean Image View (Left Side) */}
                 <div className="card card-normal">
-                  <div className="card-chip" />
-                  <div className="card-number">{card.number}</div>
-                  <div className="card-info">
-                    <span className="card-holder">{card.name}</span>
-                    <span className="card-expiry">12/28</span>
-                  </div>
+                  <img
+                    src={imgSrc}
+                    alt={`Card ${idx + 1}`}
+                    className="card-custom-image"
+                  />
                 </div>
+
+                {/* Scanned Matrix Conversion View (Right Side) */}
                 <div className="card card-ascii">
                   <pre className="ascii-content">{asciiText}</pre>
-                  <div className="card-chip" />
-                  <div className="card-number">{card.number}</div>
-                  <div className="card-info">
-                    <span className="card-holder">{card.name}</span>
-                    <span className="card-expiry">12/28</span>
-                  </div>
+                  <img
+                    src={imgSrc}
+                    alt={`Card Scanned ${idx + 1}`}
+                    className="card-custom-image ascii-bg-image"
+                  />
                 </div>
               </div>
             ))}
