@@ -2,6 +2,7 @@ import WebsiteForm from "./WebsiteForm";
 import { useRef } from "react";
 import { Clock3, Mail, MapPin } from "lucide-react";
 import { MapView } from "./Map";
+import ParticleDrift from "./ParticleDrift";
 
 export default function Contact() {
   const mapRef = useRef<google.maps.Map | null>(null);
@@ -9,11 +10,48 @@ export default function Contact() {
 
   return (
     <div>
-      <section className="page-hero page-hero-contact">
-        <div className="container page-hero-inner">
-          <div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> Start a conversation</div>
-          <h1>Let&apos;s talk about<br /><em>what&apos;s next.</em></h1>
-          <p>Whether you&apos;re hiring, looking for your next opportunity, or exploring a training partnership—we&apos;re here to help.</p>
+      <section 
+        className="page-hero page-hero-contact" 
+        style={{ 
+          position: "relative", 
+          overflow: "hidden", 
+          isolation: "isolate" 
+        }}
+      >
+        {/* Interactive Particle Layer */}
+        <div 
+          style={{ 
+            position: "absolute", 
+            top: 0, 
+            left: 0, 
+            width: "100%", 
+            height: "100%", 
+            zIndex: 1, 
+            pointerEvents: "auto" 
+          }}
+        >
+          <ParticleDrift />
+        </div>
+
+        {/* Text Layer on top with pointer-events passthrough */}
+        <div 
+          className="container page-hero-inner" 
+          style={{ 
+            position: "relative", 
+            zIndex: 2, 
+            pointerEvents: "none" 
+          }}
+        >
+          <div className="eyebrow eyebrow-light" style={{ pointerEvents: "auto" }}>
+            <span className="eyebrow-dot" /> Start a conversation
+          </div>
+          <h1 style={{ pointerEvents: "auto" }}>
+            Let&apos;s talk about<br />
+            <em>what&apos;s next.</em>
+          </h1>
+          <p style={{ pointerEvents: "auto" }}>
+            Whether you&apos;re hiring, looking for your next opportunity, or exploring a training partnership—we&apos;re here to help.
+          </p>
         </div>
       </section>
 
