@@ -14,7 +14,7 @@ const navItems = [
   { label: "Home", href: "/" },
 ];
 
-const innerPagesWithHeader = ["/about", "/services", "/careers", "/partner", "/contact"];
+const innerPages = ["/about", "/services", "/careers", "/partner", "/contact"];
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
@@ -40,6 +40,8 @@ export default function Layout({ children }: { children: ReactNode }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isInnerPage = location !== "/";
 
   return (
     <div className="site-shell">
@@ -74,13 +76,26 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       <main>
         <div key={location} className="route-stage" style={{ position: "relative" }}>
-          {/* Particle drift graphic appears ONLY on specified inner pages */}
-          {innerPagesWithHeader.includes(location) && (
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "380px", overflow: "hidden", zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
-              <ParticleDrift />
+          {/* Top Banner Particle Drift Header for Inner Pages */}
+          {isInnerPage && (
+            <div 
+              className="page-hero-banner"
+              style={{ 
+                position: "relative", 
+                width: "100%", 
+                height: "320px", 
+                backgroundColor: "#0b132b", 
+                overflow: "hidden", 
+                zIndex: 1 
+              }}
+            >
+              <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+                <ParticleDrift />
+              </div>
             </div>
           )}
-          <div style={{ position: "relative", zIndex: 1 }}>
+
+          <div style={{ position: "relative", zIndex: 2, marginTop: isInnerPage ? "-240px" : "0" }}>
             {children}
           </div>
         </div>
@@ -93,7 +108,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
 
       <footer className="site-footer" style={{ position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <ParticleDrift />
         </div>
         <div className="container footer-top" style={{ position: "relative", zIndex: 1 }}>
