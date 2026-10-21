@@ -14,8 +14,6 @@ const navItems = [
   { label: "Home", href: "/" },
 ];
 
-const innerPages = ["/about", "/services", "/careers", "/partner", "/contact"];
-
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className={`brand ${light ? "brand-light" : ""}`} aria-label="StaffzoneSolutions home">
@@ -76,26 +74,24 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       <main>
         <div key={location} className="route-stage" style={{ position: "relative" }}>
-          {/* Top Banner Particle Drift Header for Inner Pages */}
+          {/* Particle Drift positioned strictly behind the top Hero area on Inner Pages */}
           {isInnerPage && (
             <div 
-              className="page-hero-banner"
               style={{ 
-                position: "relative", 
-                width: "100%", 
-                height: "320px", 
-                backgroundColor: "#0b132b", 
+                position: "absolute", 
+                top: 0, 
+                left: 0, 
+                right: 0, 
+                height: "520px", 
                 overflow: "hidden", 
-                zIndex: 1 
+                zIndex: 0 
               }}
             >
-              <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-                <ParticleDrift />
-              </div>
+              <ParticleDrift />
             </div>
           )}
 
-          <div style={{ position: "relative", zIndex: 2, marginTop: isInnerPage ? "-240px" : "0" }}>
+          <div style={{ position: "relative", zIndex: 1 }}>
             {children}
           </div>
         </div>
