@@ -1,58 +1,28 @@
 .beam-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background-color: #0d0d11;
-  padding: 20px;
-  border-radius: 12px;
-  color: #ffffff;
-  font-family: sans-serif;
-  margin: 20px auto;
+  background: transparent;
+  padding: 0;
+  margin: 30px auto;
+  width: 100%;
 }
 
-.controls {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.control-btn {
-  background: #1a1a24;
-  border: 1px solid #33334d;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.control-btn:hover {
-  background: #2a2a3a;
-}
-
-.speed-indicator {
-  margin-bottom: 15px;
-  font-size: 14px;
-  color: #8a8a9e;
-}
-
+/* Container size increased by 25% (600px -> 750px width, 250px -> 312px height) */
 .beam-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  height: 250px;
+  max-width: 750px;
+  height: 312px;
   background: #050508;
   border: 1px solid #1f1f2e;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#particleCanvas,
-#scannerCanvas {
+#particleCanvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -69,7 +39,7 @@
   width: 3px;
   background: #a855f7;
   box-shadow: 0 0 15px #a855f7, 0 0 30px #a855f7;
-  z-index: 2;
+  z-index: 3;
 }
 
 .card-stream {
@@ -80,52 +50,61 @@
   z-index: 1;
 }
 
+/* Card size increased by 25% */
 .credit-card {
-  width: 220px;
-  height: 130px;
+  width: 275px;
+  height: 162px;
   background: linear-gradient(135deg, #1e1e2f 0%, #0a0a12 100%);
   border: 1px solid #33334d;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 12px;
+  padding: 18px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* Dissolving mask effect across scanner line */
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 55%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 55%);
 }
 
 .credit-card.moving {
   animation: slideAcross 4s linear infinite;
 }
 
-.credit-card.paused {
-  animation-play-state: paused;
-}
-
 .card-chip {
-  width: 30px;
-  height: 22px;
+  width: 38px;
+  height: 28px;
   background: #d4af37;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .card-number {
   font-family: monospace;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 1.5px;
   color: #e2e8f0;
 }
 
 .card-name {
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   color: #94a3b8;
+  letter-spacing: 1px;
 }
 
 @keyframes slideAcross {
   0% {
     transform: translateX(-180%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
   }
   100% {
     transform: translateX(180%);
+    opacity: 0;
   }
 }
