@@ -3,6 +3,7 @@ import { ArrowRight, HeartHandshake, Lightbulb, ShieldCheck, Target, UsersRound 
 import { Link } from "wouter";
 import AtlasSash from "./AtlasSash";
 import ParticleDrift from "./ParticleDrift";
+import CardBeam from "./CardBeam";
 
 const values = [
   { icon: HeartHandshake, title: "People-first", text: "We create better outcomes for employers and candidates by listening to both sides of the opportunity." },
@@ -227,7 +228,35 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section compliance-section"><div className="container"><div className="section-kicker">Business credentials</div><div className="compliance-intro"><h2 className="section-heading">Built on trust.<br /><span>Registered to deliver.</span></h2><p className="body-large">Our statutory registrations and MSME certification reflect the professional foundation behind every employer and candidate relationship.</p></div><div className="compliance-grid"><article className="compliance-card"><span className="compliance-label">GST Registration Number</span><strong>GST Registration Number: 37AFZFS2451K1Z6</strong><p>Staffzone Solutions LLP is registered to provide professional staffing and HR services.</p></article><article className="compliance-card compliance-certificate"><span className="compliance-label">MSME Certificate</span><strong>Udyam Registration: UDYAM-AP-23-0094171</strong><p>Micro enterprise registration under the Ministry of Micro, Small & Medium Enterprises.</p><a href="/manus-storage/StaffzoneUdyamCertificate_1pg_4c5fed8f.pdf" target="_blank" rel="noreferrer" className="button button-outline">View certificate <ArrowRight size={16} /></a></article></div></div></section>
+      <section className="section compliance-section">
+        <div className="container">
+          <div className="section-kicker">Business credentials</div>
+          <div className="compliance-intro">
+            <h2 className="section-heading">Built on trust.<br /><span>Registered to deliver.</span></h2>
+            <p className="body-large">Our statutory registrations and MSME certification reflect the professional foundation behind every employer and candidate relationship.</p>
+          </div>
+          <div className="compliance-grid">
+            <article className="compliance-card">
+              <span className="compliance-label">GST Registration Number</span>
+              <strong>GST Registration Number: 37AFZFS2451K1Z6</strong>
+              <p>Staffzone Solutions LLP is registered to provide professional staffing and HR services.</p>
+            </article>
+            <article className="compliance-card compliance-certificate">
+              <span className="compliance-label">MSME Certificate</span>
+              <strong>Udyam Registration: UDYAM-AP-23-0094171</strong>
+              <p>Micro enterprise registration under the Ministry of Micro, Small & Medium Enterprises.</p>
+              <a href="/manus-storage/StaffzoneUdyamCertificate_1pg_4c5fed8f.pdf" target="_blank" rel="noreferrer" className="button button-outline">
+                View certificate <ArrowRight size={16} />
+              </a>
+            </article>
+          </div>
+
+          {/* Card Beam 3D Animation Component */}
+          <div style={{ marginTop: "40px" }}>
+            <CardBeam />
+          </div>
+        </div>
+      </section>
 
       <section ref={valuesRef} className={`section values-section social-values-section ${valuesVisible ? "social-values-visible" : ""}`}><div className="container"><div className="section-kicker">What guides us</div><div className="values-intro"><h2 className="section-heading">Our values are not<br /><span>wallpaper.</span></h2><p className="body-large">They shape how we listen, how we advise, and how we measure the work we put into the world.</p></div><div className="values-grid">{values.map((value, index) => <TypeoutValueCard value={value} index={index} active={valuesVisible} key={value.title} />)}</div></div></section>
 
