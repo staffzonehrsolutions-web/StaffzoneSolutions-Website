@@ -130,13 +130,13 @@ export default function About() {
   return (
     <div>
       <section className="page-hero page-hero-about" style={{ position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "auto" }}>
           <ParticleDrift />
         </div>
-        <div className="container page-hero-inner" style={{ position: "relative", zIndex: 1 }}>
-          <div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> About StaffzoneSolutions</div>
-          <h1>Better work starts<br /><em>with the right people.</em></h1>
-          <p>Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.</p>
+        <div className="container page-hero-inner" style={{ position: "relative", zIndex: 1, pointerEvents: "none" }}>
+          <div className="eyebrow eyebrow-light" style={{ pointerEvents: "auto" }}><span className="eyebrow-dot" /> About StaffzoneSolutions</div>
+          <h1 style={{ pointerEvents: "auto" }}>Better work starts<br /><em>with the right people.</em></h1>
+          <p style={{ pointerEvents: "auto" }}>Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.</p>
         </div>
       </section>
 
