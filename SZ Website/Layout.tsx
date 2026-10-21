@@ -73,7 +73,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <main>
         <div key={location} className="route-stage" style={{ position: "relative" }}>
           {/* Particle drift graphic ONLY appears on the Home page ("/") */}
-          {location === "/" && (
+          {location !== "/" && (
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "380px", overflow: "hidden", zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
               <ParticleDrift />
             </div>
