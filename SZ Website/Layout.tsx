@@ -72,13 +72,12 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       <main>
         <div key={location} className="route-stage" style={{ position: "relative" }}>
-          {/* Particle drift graphic ONLY shows up on the Home page ("/") */}
+          {/* Particle drift graphic ONLY appears on the Home page ("/") */}
           {location === "/" && (
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "350px", overflow: "hidden", zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "380px", overflow: "hidden", zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
               <ParticleDrift />
             </div>
           )}
-          {/* Page content rendered above */}
           <div style={{ position: "relative", zIndex: 1 }}>
             {children}
           </div>
@@ -92,7 +91,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
 
       <footer className="site-footer" style={{ position: "relative", overflow: "hidden" }}>
-        {/* Particle Drift Graphic behind the Footer Blue Area across all pages */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
           <ParticleDrift />
         </div>
