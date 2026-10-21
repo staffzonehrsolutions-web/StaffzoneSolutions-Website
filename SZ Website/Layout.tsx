@@ -14,6 +14,8 @@ const navItems = [
   { label: "Home", href: "/" },
 ];
 
+const innerPagesWithHeader = ["/about", "/services", "/careers", "/partner", "/contact"];
+
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className={`brand ${light ? "brand-light" : ""}`} aria-label="StaffzoneSolutions home">
@@ -46,7 +48,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Logo light={!scrolled} />
           <nav className="desktop-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
-                <Link key={item.href} href={item.href} className={`nav-link ${location === item.href ? "nav-link-active" : ""} ${item.href === "/" ? "nav-home-link" : ""}`}>
+              <Link key={item.href} href={item.href} className={`nav-link ${location === item.href ? "nav-link-active" : ""} ${item.href === "/" ? "nav-home-link" : ""}`}>
                 {item.label}
               </Link>
             ))}
@@ -72,8 +74,8 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       <main>
         <div key={location} className="route-stage" style={{ position: "relative" }}>
-          {/* Particle drift graphic ONLY appears on the Home page ("/") */}
-          {location !== "/" && (
+          {/* Particle drift graphic appears ONLY on specified inner pages */}
+          {innerPagesWithHeader.includes(location) && (
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "380px", overflow: "hidden", zIndex: 0, pointerEvents: "none", opacity: 0.6 }}>
               <ParticleDrift />
             </div>
@@ -108,8 +110,8 @@ export default function Layout({ children }: { children: ReactNode }) {
             <span className="footer-label">Explore</span>
             <Link href="/about">About us</Link>
             <Link href="/services">Our services</Link>
-              <Link href="/careers">Join the team</Link>
-              <Link href="/partner">Partner with us</Link>
+            <Link href="/careers">Join the team</Link>
+            <Link href="/partner">Partner with us</Link>
           </div>
           <div className="footer-links-group">
             <span className="footer-label">Get in touch</span>
