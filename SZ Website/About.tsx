@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, HeartHandshake, Lightbulb, ShieldCheck, Target, UsersRound } from "lucide-react";
 import { Link } from "wouter";
 import AtlasSash from "./AtlasSash";
+import ParticleDrift from "./ParticleDrift";
 
 const values = [
   { icon: HeartHandshake, title: "People-first", text: "We create better outcomes for employers and candidates by listening to both sides of the opportunity." },
@@ -128,66 +129,75 @@ export default function About() {
 
   return (
     <div>
-<section className="page-hero page-hero-about"><div className="container page-hero-inner"><div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> About StaffzoneSolutions</div><h1>Better work starts<br /><em>with the right people.</em></h1><p>Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.</p></div></section>
+      <section className="page-hero page-hero-about" style={{ position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+          <ParticleDrift />
+        </div>
+        <div className="container page-hero-inner" style={{ position: "relative", zIndex: 1 }}>
+          <div className="eyebrow eyebrow-light"><span className="eyebrow-dot" /> About StaffzoneSolutions</div>
+          <h1>Better work starts<br /><em>with the right people.</em></h1>
+          <p>Based in Andhra Pradesh, we connect organisations and professionals across India through trusted staffing, HR solutions, and career-building opportunities.</p>
+        </div>
+      </section>
 
-<section className="section story-section">
-  <div className="container story-grid">
-    <div className="story-image-wrap">
-      <div
-        ref={atlasFrameRef}
-        className="story-atlas-frame"
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "520px",
-          aspectRatio: "1 / 1",
-          marginInline: "auto",
-          overflow: "hidden",
-          borderRadius: "50%",
-          background: "radial-gradient(circle at 50% 42%, #073764 0%, #021b35 58%, #010b19 100%)",
-          border: "1px solid rgba(2, 227, 244, 0.45)",
-          boxShadow: "0 0 42px rgba(2, 227, 244, 0.14)",
-        }}
-      >
-        <AtlasSash
-          text="StaffzoneSolutions was created to help organisations hire with confidence and help individuals access the skills, experience, and opportunities they need to succeed."
-          background="transparent"
-          stars={3}
-          font={{
-            fontFamily: "Inter",
-            fontWeight: 500,
-            fontSize: 22,
-            lineHeight: "1.25em",
-            letterSpacing: "0em",
-          }}
-          textColor="#02E3F4"
-          ring={{ lines: 4, radius: 110, tilt: 38, damping: 5, drift: 1.3 }}
-          size={atlasSize}
-          look={{ clouds: 4, lights: 4, atmosphere: "#02E3F4" }}
-          sun={{ source: "cursor", angle: 155, daylight: 70 }}
-          drag={true}
-          hover={3}
-          speed={2}
-          style={{ width: "100%", height: "100%" }}
-        />
-      </div>
-      <div className="image-note">
-        <span>01</span>
-        <span>People before process</span>
-      </div>
-    </div>
-    <div className="story-copy">
-      <div className="section-kicker">Our story</div>
-      <h2 className="section-heading">Local expertise.<br /><span>National ambition.</span></h2>
-      <p className="body-large">StaffzoneSolutions was created to help organisations hire with confidence and help individuals access the skills, experience, and opportunities they need to succeed.</p>
-      <p>From recruitment and payroll to campus drives, internships, project placements, and career guidance, we bring employers and talent closer together. Our Andhra Pradesh roots keep us grounded in local relationships, while our reach helps us serve teams and professionals across the country.</p>
-    </div>
-  </div>
-</section>
+      <section className="section story-section">
+        <div className="container story-grid">
+          <div className="story-image-wrap">
+            <div
+              ref={atlasFrameRef}
+              className="story-atlas-frame"
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "520px",
+                aspectRatio: "1 / 1",
+                marginInline: "auto",
+                overflow: "hidden",
+                borderRadius: "50%",
+                background: "radial-gradient(circle at 50% 42%, #073764 0%, #021b35 58%, #010b19 100%)",
+                border: "1px solid rgba(2, 227, 244, 0.45)",
+                boxShadow: "0 0 42px rgba(2, 227, 244, 0.14)",
+              }}
+            >
+              <AtlasSash
+                text="StaffzoneSolutions was created to help organisations hire with confidence and help individuals access the skills, experience, and opportunities they need to succeed."
+                background="transparent"
+                stars={3}
+                font={{
+                  fontFamily: "Inter",
+                  fontWeight: 500,
+                  fontSize: 22,
+                  lineHeight: "1.25em",
+                  letterSpacing: "0em",
+                }}
+                textColor="#02E3F4"
+                ring={{ lines: 4, radius: 110, tilt: 38, damping: 5, drift: 1.3 }}
+                size={atlasSize}
+                look={{ clouds: 4, lights: 4, atmosphere: "#02E3F4" }}
+                sun={{ source: "cursor", angle: 155, daylight: 70 }}
+                drag={true}
+                hover={3}
+                speed={2}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </div>
+            <div className="image-note">
+              <span>01</span>
+              <span>People before process</span>
+            </div>
+          </div>
+          <div className="story-copy">
+            <div className="section-kicker">Our story</div>
+            <h2 className="section-heading">Local expertise.<br /><span>National ambition.</span></h2>
+            <p className="body-large">StaffzoneSolutions was created to help organisations hire with confidence and help individuals access the skills, experience, and opportunities they need to succeed.</p>
+            <p>From recruitment and payroll to campus drives, internships, project placements, and career guidance, we bring employers and talent closer together. Our Andhra Pradesh roots keep us grounded in local relationships, while our reach helps us serve teams and professionals across the country.</p>
+          </div>
+        </div>
+      </section>
 
-<section className="section compliance-section"><div className="container"><div className="section-kicker">Business credentials</div><div className="compliance-intro"><h2 className="section-heading">Built on trust.<br /><span>Registered to deliver.</span></h2><p className="body-large">Our statutory registrations and MSME certification reflect the professional foundation behind every employer and candidate relationship.</p></div><div className="compliance-grid"><article className="compliance-card"><span className="compliance-label">GST Registration Number</span><strong>GST Registration Number: 37AFZFS2451K1Z6</strong><p>Staffzone Solutions LLP is registered to provide professional staffing and HR services.</p></article><article className="compliance-card compliance-certificate"><span className="compliance-label">MSME Certificate</span><strong>Udyam Registration: UDYAM-AP-23-0094171</strong><p>Micro enterprise registration under the Ministry of Micro, Small & Medium Enterprises.</p><a href="/manus-storage/StaffzoneUdyamCertificate_1pg_4c5fed8f.pdf" target="_blank" rel="noreferrer" className="button button-outline">View certificate <ArrowRight size={16} /></a></article></div></div></section>
+      <section className="section compliance-section"><div className="container"><div className="section-kicker">Business credentials</div><div className="compliance-intro"><h2 className="section-heading">Built on trust.<br /><span>Registered to deliver.</span></h2><p className="body-large">Our statutory registrations and MSME certification reflect the professional foundation behind every employer and candidate relationship.</p></div><div className="compliance-grid"><article className="compliance-card"><span className="compliance-label">GST Registration Number</span><strong>GST Registration Number: 37AFZFS2451K1Z6</strong><p>Staffzone Solutions LLP is registered to provide professional staffing and HR services.</p></article><article className="compliance-card compliance-certificate"><span className="compliance-label">MSME Certificate</span><strong>Udyam Registration: UDYAM-AP-23-0094171</strong><p>Micro enterprise registration under the Ministry of Micro, Small & Medium Enterprises.</p><a href="/manus-storage/StaffzoneUdyamCertificate_1pg_4c5fed8f.pdf" target="_blank" rel="noreferrer" className="button button-outline">View certificate <ArrowRight size={16} /></a></article></div></div></section>
 
-<section ref={valuesRef} className={`section values-section social-values-section ${valuesVisible ? "social-values-visible" : ""}`}><div className="container"><div className="section-kicker">What guides us</div><div className="values-intro"><h2 className="section-heading">Our values are not<br /><span>wallpaper.</span></h2><p className="body-large">They shape how we listen, how we advise, and how we measure the work we put into the world.</p></div><div className="values-grid">{values.map((value, index) => <TypeoutValueCard value={value} index={index} active={valuesVisible} key={value.title} />)}</div></div></section>
+      <section ref={valuesRef} className={`section values-section social-values-section ${valuesVisible ? "social-values-visible" : ""}`}><div className="container"><div className="section-kicker">What guides us</div><div className="values-intro"><h2 className="section-heading">Our values are not<br /><span>wallpaper.</span></h2><p className="body-large">They shape how we listen, how we advise, and how we measure the work we put into the world.</p></div><div className="values-grid">{values.map((value, index) => <TypeoutValueCard value={value} index={index} active={valuesVisible} key={value.title} />)}</div></div></section>
 
       <section ref={statsRef} className={`section timeline-section impact-section ${statsVisible ? "impact-section-visible" : ""}`}><div className="container history-grid"><div className="history-intro"><div className="section-kicker">A little history</div><h2 className="section-heading">Growing with<br /><span>the people.</span></h2><p className="body-large">From a shared idea to an LLP with a growing South India footprint, our journey has always been shaped by relationships, reliability, and the people we support.</p></div><div className="history-cards impact-stats-grid">{impactStats.map((stat, index) => <AnimatedStat key={stat.label} {...stat} index={index} active={statsVisible} />)}</div></div></section>
 
