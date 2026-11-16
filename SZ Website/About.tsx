@@ -67,12 +67,12 @@ const foundingMembers = [
 ];
 
 const corporateTeam = [
-  { name: "open", role: "Head of Corporate Affairs & Operation" },
-  { name: "Vinay", role: "Head – Talent Acquisition & Talent Acquisition & Workforce Solutions" },
+  { name: "", role: "" },
+  { name: "", role: "" },
 ];
 
 const leaders = [
-  { name: "open", role: "Manager" },
+  { name: "", role: "" },
 ];
 
 export default function About() {
