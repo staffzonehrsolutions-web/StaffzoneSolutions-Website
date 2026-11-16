@@ -62,17 +62,17 @@ function AnimatedStat({ target, suffix, label, detail, index, active }: { target
 }
 
 const foundingMembers = [
-  { name: "B. Swetha", role: "Designated Partner" },
+  { name: "B Swetha", role: "Designated Partner" },
   { name: "Y Vineeth Kumar", role: "Designated Partner" },
 ];
 
 const corporateTeam = [
-  { name: "Harsha", role: "Head of Corporate Affairs & Operation" },
+  { name: " open ", role: "Head of Corporate Affairs & Operation" },
   { name: "Vinay", role: "Head – Talent Acquisition & Talent Acquisition & Workforce Solutions" },
 ];
 
 const leaders = [
-  { name: "Shaik Munvar Sulthan", role: "South Zone Manager" },
+  { name: " open ", role: " Manager" },
 ];
 
 export default function About() {
